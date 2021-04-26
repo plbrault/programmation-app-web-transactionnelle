@@ -15,7 +15,7 @@
 <html>
   <head>
     <title>
-      Exemple <?pho echo $noExemple; ?></h1>
+      Exemple <?php echo $noExemple; ?></h1>
     </title>
   </head>
   <body>

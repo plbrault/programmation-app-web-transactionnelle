@@ -8,7 +8,7 @@
 <html>
   <head>
     <title>
-      Exemple <?pho echo $noExemple; /* affiche la valeur de la variable */ ?></h1>
+      Exemple <?php echo $noExemple; /* affiche la valeur de la variable */ ?></h1>
     </title>
   </head>
   <body>
