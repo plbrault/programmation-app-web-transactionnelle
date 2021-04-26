@@ -6,7 +6,7 @@
 <html>
   <head>
     <title>
-      <h1>Exemple <?php echo $noExemple; ?></h1>
+      Exemple <?php echo $noExemple; ?>
     </title>
   </head>
   <body>
