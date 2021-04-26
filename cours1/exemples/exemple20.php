@@ -15,7 +15,7 @@
       /*
         On peut recevoir des variables par l'URL
 
-        Ex: http://localhost/cours1/exemple20.php?nom=Simpson&prenom=Homer
+        Ex: http://localhost/cours1/exemples/exemple20.php?nom=Simpson&prenom=Homer
 
         Pour récupérer les variables nom et prenom, on utilise $_GET["nom"] et $_GET["prenom"]
       */
