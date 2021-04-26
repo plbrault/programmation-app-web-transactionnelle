@@ -3,7 +3,7 @@
   <head>
     <title>
       <?php
-        // Je peux inclure du PHP à plusieurs endroit dans mon code HTML
+        // Je peux inclure du PHP à plusieurs endroits dans mon code HTML
         echo 'Exemple 06';
       ?>
     </title>
