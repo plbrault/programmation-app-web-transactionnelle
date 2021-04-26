@@ -11,14 +11,14 @@
       $b = $a + 5;
       
 
-      echo '$a = ' . $a;
-      echo '<br />$b = ' . $b;
+      echo '$a = ' . $a
+        . '<br />$b = ' . $b;
       
       $a = 12;
 
 
-      echo '<br />$a = ' . $a;
-      echo '<br />$b = ' . $b;
+      echo '<br />$a = ' . $a
+        . '<br />$b = ' . $b;
     ?>
   </body>
 </html>
