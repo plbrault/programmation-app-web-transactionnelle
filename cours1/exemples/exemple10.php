@@ -1,7 +1,10 @@
 <?php
   $noExemple = 10;
-  $prix = 3.55;
+  $prix = 2.99;
   $nomProduit = "Hamburger";
+
+  // Une variable peut changer de valeur
+  $prix = 3.25
 ?>
 
 <!DOCTYPE html>
