@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      Laboratoire 01 (A)
+      Laboratoire 01 (B)
     </title>
   </head>
   <body>
