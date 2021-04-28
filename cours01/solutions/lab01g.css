@@ -1,0 +1,12 @@
+body {
+  color: blue;
+  font-size: 24pt;
+  text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 20px;
+}
