@@ -1,5 +1,5 @@
 <?php
-  $noExemple = 7;
+  $noExemple = 6;
 ?>
 
 <!DOCTYPE html>
