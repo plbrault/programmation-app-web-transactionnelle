@@ -9,9 +9,9 @@
   </head>
   <body>
   <?php
-    $nombre = $_GET['nombre'];
+    if (isset($_GET['nombre'])) {
+      $nombre = $_GET['nombre'];
 
-    if (isset($nombre)) {
       $estNegatif = $nombre < 0;
       $estNul = $nombre == 0;
       $estPositif = $nombre > 0;

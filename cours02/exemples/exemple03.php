@@ -9,9 +9,8 @@
   </head>
   <body>
   <?php
-    $nombre = $_GET['nombre'];
-
-    if (isset($nombre)) {
+    if (isset($_GET['nombre'])) {
+      $nombre = $_GET['nombre'];
       $signe = null; // Déclare une variable sans l'initialiser
 
       if ($nombre < 0) {
