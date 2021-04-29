@@ -20,10 +20,14 @@
       if (isset($_GET['nombre'])) {
         $nombre = $_GET['nombre'];
 
-        if ($nombre % 2) {              // Tout nombre différent de 0 est équivalent à true
-          echo "$nombre est impair.";
-        } else {                        // 0 est équivalent à false
-          echo "$nombre est pair.";
+        if ($nombre % 3 === 0 && $nombre % 5 === 0) {
+          echo "$nombre est divisible par 3 et 5.";
+        } else if ($nombre % 3 === 0) {
+          echo "$nombre est divisible par 3.";
+        } else if ($nombre % 5 === 0) {
+          echo "$nombre est divisible par 5.";
+        } else {
+          echo "$nombre n'est divisible ni par 3, ni par 5.";
         }
       } else {
         echo 'Paramètre <strong>nombre</strong> manquant.';

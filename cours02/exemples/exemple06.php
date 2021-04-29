@@ -1,5 +1,5 @@
 <?php
-  $noExemple = 6;
+  $noExemple = 7;
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +20,10 @@
       if (isset($_GET['nombre'])) {
         $nombre = $_GET['nombre'];
 
-        if ($nombre % 2 === 0) {
-          echo "$nombre est pair.";
-        } else {
+        if ($nombre % 2) {              // Tout nombre différent de 0 est équivalent à true
           echo "$nombre est impair.";
+        } else {                        // 0 est équivalent à false
+          echo "$nombre est pair.";
         }
       } else {
         echo 'Paramètre <strong>nombre</strong> manquant.';

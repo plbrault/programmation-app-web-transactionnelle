@@ -1,5 +1,5 @@
 <?php
-  $noExemple = 5;
+  $noExemple = 9;
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +20,12 @@
       if (isset($_GET['nombre'])) {
         $nombre = $_GET['nombre'];
 
-        if ($nombre % 2 === 0) {
-          echo "$nombre est pair.";
+        if ($nombre % 3 === 0 xor $nombre % 5 === 0) {
+          echo "$nombre est divisible par 3 <strong>ou bien</strong> par 5.";
+        } else if ($nombre % 3 === 0 && $nombre % 5 === 0) {
+          echo "$nombre est divisible par 3 et 5.";
         } else {
-          echo "$nombre est impair.";
+          echo "$nombre n'est divisible ni par 3, ni par 5.";
         }
       } else {
         echo 'Paramètre <strong>nombre</strong> manquant.';
