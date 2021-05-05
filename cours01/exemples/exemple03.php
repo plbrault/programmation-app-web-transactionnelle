@@ -11,7 +11,7 @@
 
     // Ceci est un commentaire.
 
-    /*
+    /* 
        Ceci est aussi
        un commentaire.
     */
