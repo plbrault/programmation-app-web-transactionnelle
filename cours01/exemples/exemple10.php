@@ -4,7 +4,7 @@
   $nomProduit = "Hamburger";
 
   // Une variable peut changer de valeur
-  $prix = 3.25
+  $prix = 3.25;
 ?>
 
 <!DOCTYPE html>
