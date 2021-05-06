@@ -4,54 +4,23 @@
     <title>
       Laboratoire 02 (E)
     </title>
-    <link rel="stylesheet" type="text/css" href="lab01g.css" />
   </head>
   <body>
     <?php
-      if (isset($_GET['heures'])) {
-        $heures = $_GET['heures'];
+      if (!isset($_GET['nombre1'])) {
+        echo 'Paramètre manquant: "<strong>nombre1</strong>".';
+      } else if (!isset($_GET['nombre2'])) {
+        echo 'Paramètre manquant: "<strong>nombre2</strong>".';
       } else {
-        $heures = 0;
-      }
+        $nombre1 = $_GET['nombre1'];
+        $nombre2 = $_GET['nombre2'];
 
-      if (isset($_GET['minutes'])) {
-        $minutes = $_GET['minutes'];
-      } else {
-        $minutes = 0;
+        if ($nombre1 <= $nombre2) {
+          echo "$nombre1 $nombre2";
+        } else {
+          echo "$nombre2 $nombre1";
+        }
       }
-
-      if (isset($_GET['secondes'])) {
-        $secondes = $_GET['secondes'];
-      } else {
-        $secondes = 0;
-      }
-
-      $secondes++;
-
-      if ($secondes == 60) {
-        $minutes++;
-        $secondes = 0;
-      }
-      if ($minutes == 60) {
-        $heures++;
-        $minutes = 0;
-      }
-      if ($heures == 24) {
-        $heures = 0;
-      }
-
-      if ($heures < 10) {
-        echo 0;
-      }
-      echo "$heures:";
-      if ($minutes < 10) {
-        echo 0;
-      }
-      echo "$minutes:";
-      if ($secondes < 10) {
-        echo 0;
-      }
-      echo "$secondes";
     ?>
   </body>
 </html>

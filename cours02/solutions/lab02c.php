@@ -4,7 +4,6 @@
     <title>
       Laboratoire 02 (C)
     </title>
-    <link rel="stylesheet" type="text/css" href="lab01g.css" />
   </head>
   <body>
     <?php

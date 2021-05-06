@@ -4,7 +4,6 @@
     <title>
       Laboratoire 02 (A)
     </title>
-    <link rel="stylesheet" type="text/css" href="lab01g.css" />
   </head>
   <body>
     <?php
@@ -17,7 +16,7 @@
           echo 'Vous êtes vieux ou vieille.';
         }
       } else {
-        echo "Paramètre <strong>age</strong> manquant.";
+        echo 'Paramètre "<strong>age</strong>" manquant.';
       }
     ?>
   </body>
