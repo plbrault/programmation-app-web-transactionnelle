@@ -1,5 +1,5 @@
 <?php
-  $noExemple = 8;
+  $noExemple = 7;
 
   // Ce script dessine un tableau d'échecs
 ?>
@@ -16,7 +16,28 @@
         echo $noExemple;
       ?>
     </title>
-    <link rel="stylesheet" type="text/css" href="exemple08.css" />
+    <style>
+      table {
+        width: 60%;
+      }
+      
+      table, th, td {
+        border: 1px solid black;
+      }
+
+      td {
+        padding-bottom: 9%;
+        height: 0px;
+      }
+
+      .blanc {
+        background-color: white;
+      }
+
+      .noir {
+        background-color: black;
+      }
+    </style>
   </head>
   <body>
     <table>
