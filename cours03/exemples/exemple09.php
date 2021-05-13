@@ -22,7 +22,7 @@
       <?php
         if (!isset($_GET['nombre'])) {
           echo 'Paramètre <strong>nombre</strong> manquant.';
-          exit; // Arrête l'exécution du script ici. Pratique pour les validations de paramètres.
+          exit;
         }
 
         $nombreDepart = $_GET['nombre'];
