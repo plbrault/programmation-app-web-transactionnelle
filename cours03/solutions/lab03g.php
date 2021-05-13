@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Laboratoire 03 (E)</title>
+    <title>Laboratoire 03 (G)</title>
   </head>
   <body>
     <?php
