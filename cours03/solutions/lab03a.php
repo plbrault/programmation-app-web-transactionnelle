@@ -5,10 +5,8 @@
   </head>
   <body>
     <?php
-      $compteur = 1;
-      while ($compteur <= 99) {
-        echo "$compteur <br />";
-        $compteur += 2;
+      for ($i = 1; $i <= 99; $i += 2) {
+        echo "$i <br />";
       }
     ?>
   </body>

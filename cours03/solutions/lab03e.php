@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Laboratoire 03 (F)</title>
+    <title>Laboratoire 03 (E)</title>
   </head>
   <body>
     <select name="nombre">
