@@ -18,11 +18,16 @@
     </title>
     <style>
       table {
-        width: 80%;
+        width: 60%;
       }
-
+      
       table, th, td {
         border: 1px solid black;
+      }
+
+      td {
+        padding-bottom: 9%;
+        height: 0px;
       }
 
       .blanc {
@@ -47,7 +52,7 @@
             } else {
               echo 'noir';
             }
-            echo '">&nbsp;</td>';
+            echo '"></td>';
           }
           echo '</tr>';
         }
