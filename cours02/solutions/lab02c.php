@@ -13,7 +13,7 @@
 
         if ($genre !== 'M' && $genre !== 'm' && $genre !== 'F' && $genre !== 'f' && $genre !== 'X' && $genre !== 'x') {
           echo "Erreur: Le genre doit être M, F ou X.";
-        } else if ($age < 0) {
+        } else if ($age <= 0) {
           echo "Erreur: L'âge doit être supérieur à 0.";
         } else if ($age > 120) {
           if ($genre === 'M' || $genre === 'm') {
