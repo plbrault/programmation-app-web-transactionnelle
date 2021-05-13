@@ -1,7 +1,13 @@
 <?php
   $noExemple = 8;
 
-  // Ce script dessine un tableau d'échecs
+/*
+
+Ce script utilise une boucle for pour afficher les 20 premiers nombres de la suite de Fibonacci
+(0, 1, 1, 2, 3, 5, 8, 13, 21, ...)
+
+*/
+
 ?>
 
 <!DOCTYPE html>
@@ -16,26 +22,17 @@
         echo $noExemple;
       ?>
     </title>
-    <link rel="stylesheet" type="text/css" href="exemple08.css" />
   </head>
   <body>
-    <table>
-      <?php
-        for ($i = 0; $i < 8; $i++) {
-          echo '<tr>';
-          for ($j = 0; $j < 8; $j++) {
-            echo '<td class="';
-            // Si la parité (pair ou impair) de la ligne est égale à celle de la colonne, la case doit être blanche. Sinon, elle doit être noire.
-            if ($i % 2 === $j % 2) {
-              echo 'blanc';
-            } else {
-              echo 'noir';
-            }
-            echo '"></td>';
-          }
-          echo '</tr>';
+    <?php
+        $nombre1 = 0;
+        $nombre2 = 1;
+        for ($i = 0; $i < 20; $i++) {
+          $somme = $nombre1 + $nombre2;
+          echo "$somme<br />";
+          $nombre1 = $nombre2;
+          $nombre2 = $somme;
         }
-      ?>
-    </table>
+    ?>
   </body>
 </html>

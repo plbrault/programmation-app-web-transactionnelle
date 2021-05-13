@@ -1,7 +1,7 @@
 <?php
   $noExemple = 9;
 
-  // Ce script permet de savoir combien de fois un nombre peut être divisé par 2 avant d'obtenir un résultat inférieur ou égal à 1.
+  // Ce script dessine un tableau d'échecs
 ?>
 
 <!DOCTYPE html>
@@ -16,25 +16,25 @@
         echo $noExemple;
       ?>
     </title>
+    <link rel="stylesheet" type="text/css" href="exemple09.css" />
   </head>
   <body>
     <table>
       <?php
-        if (!isset($_GET['nombre'])) {
-          echo 'Paramètre <strong>nombre</strong> manquant.';
-          exit;
+        for ($i = 0; $i < 8; $i++) {
+          echo '<tr>';
+          for ($j = 0; $j < 8; $j++) {
+            echo '<td class="';
+            // Si la parité (pair ou impair) de la ligne est égale à celle de la colonne, la case doit être blanche. Sinon, elle doit être noire.
+            if ($i % 2 === $j % 2) {
+              echo 'blanc';
+            } else {
+              echo 'noir';
+            }
+            echo '"></td>';
+          }
+          echo '</tr>';
         }
-
-        $nombreDepart = $_GET['nombre'];
-        $nombre = $nombreDepart;
-
-        $compteur = 0;
-        while ($nombre > 1) {
-          $nombre /= 2;
-          $compteur++;
-        }
-
-        echo "$nombreDepart peut être divisé par deux $compteur fois avant d'obtenir un résultat inférieur ou égal à 1.";
       ?>
     </table>
   </body>

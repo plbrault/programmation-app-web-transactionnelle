@@ -3,8 +3,18 @@
 
 /*
 
-Ce script utilise une boucle for pour afficher les 20 premiers nombres de la suite de Fibonacci
-(0, 1, 1, 2, 3, 5, 8, 13, 21, ...)
+Ce script utilise des boucles for imbriquées pour afficher le motif suivant:
+
+* * * * * * * * * *
+* * * * * * * * *
+* * * * * * * *
+* * * * * * *
+* * * * * *
+* * * * *
+* * * *
+* * *
+* *
+*
 
 */
 
@@ -25,14 +35,12 @@ Ce script utilise une boucle for pour afficher les 20 premiers nombres de la sui
   </head>
   <body>
     <?php
-        $nombre1 = 0;
-        $nombre2 = 1;
-        for ($i = 0; $i < 20; $i++) {
-          $somme = $nombre1 + $nombre2;
-          echo "$somme<br />";
-          $nombre1 = $nombre2;
-          $nombre2 = $somme;
-        }
+        for ($ligne = 10; $ligne >= 1; $ligne--) {
+          for ($colonne = 1; $colonne <= $ligne; $colonne++) {
+            echo '* ';
+          }
+          echo '<br />';
+        }    
     ?>
   </body>
 </html>
