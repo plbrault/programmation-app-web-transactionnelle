@@ -1,5 +1,5 @@
 <?php
-  $noExemple = 3;
+  $noExemple = 5;
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +20,23 @@
       // Crée un tableau de chaînes de caractères
       $familleSimpson = ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie'];
 
-      // Ajoute " Simpson" à chaque élément du tableau à l'aide d'une boucle For
-      for ($i = 0; $i < count($familleSimpson); $i++) {
-        $familleSimpson[$i] .= " Simpson";
-      }
-
       echo 'La famille Simpson comprend ' . count($familleSimpson) .  ' personnes: <br />';
       echo '<ul>';
-      foreach ($familleSimpson as $membreFamilleSimpson) {
+
+      // À l'aide d'une boucle For-Each, ajoute " Simpson" ou " Bouvier" à chaque élément du tableau avant de l'afficher
+      foreach ($familleSimpson as &$membreFamilleSimpson) {
+        if ($membreFamilleSimpson === 'Marge') {
+          $membreFamilleSimpson .= " Bouvier";
+        } else {
+          $membreFamilleSimpson .= " Simpson";
+        }
+
         echo "<li>$membreFamilleSimpson</li>";
       }
+
       echo '</ul>';
+
+      unset($membreFamilleSimpson);
     ?>
   </body>
 </html>
