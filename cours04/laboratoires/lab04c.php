@@ -7,7 +7,7 @@
     <?php
       $nombres = array();
       
-      for ($i = 0; $i <= 100; $i += 2) {
+      for ($i = 0; $i <= 200; $i += 2) {
         array_push($nombres, $i);
       }
     ?>
