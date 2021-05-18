@@ -7,7 +7,7 @@
     <?php
       if (isset($_POST['condiments']) && is_array($_POST['condiments'])) {
         foreach ($_POST['condiments'] as $condiment) {
-          echo "$condiment <br />";
+          echo htmlspecialchars($condiment) . '<br />';
         }
       } else {
         ?>
