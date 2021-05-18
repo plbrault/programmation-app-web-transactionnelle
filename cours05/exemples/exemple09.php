@@ -25,24 +25,22 @@
           - Sinon, réafficher le formulaire avec un message d'erreur
       */
 
-      $formulaireEnvoye = isset($_POST['utilisateur']) && isset($_POST['motDePasse']);
+      $afficherFormulaire = true;
 
-      if ($formulaireEnvoye) {
+      if (isset($_POST['utilisateur']) && isset($_POST['motDePasse'])) {
         $utilisateur = $_POST['utilisateur'];
         $motDePasse = $_POST['motDePasse'];
 
-        $motDePasseInvalide = $motsDePasseUtilisateurs[$utilisateur] !== $motDePasse;
-
-        if (!$motDePasseInvalide) {
+        if ($motsDePasseUtilisateurs[$utilisateur] === $motDePasse) {
           echo "<p>Bonjour <strong>$utilisateur</strong> !</p>";
+          
+          $afficherFormulaire = false;
+        } else {
+          echo "<p>Nom d'utilisateur ou mot de passe invalide.</p>";
         }
       }
 
-      if (!$formulaireEnvoye || $motDePasseInvalide) {
-        if ($motDePasseInvalide) {
-          echo "<p>Nom d'utilisateur ou mot de passe invalide.</p>";
-        }
-
+      if ($afficherFormulaire) {
         ?>
 
         <form action="exemple09.php" method="POST">
