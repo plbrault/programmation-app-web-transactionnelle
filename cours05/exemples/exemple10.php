@@ -21,14 +21,19 @@
         ?>
 
         <form action="exemple10.php" method="POST">
-          <p>Crémeuse ou traditionnelle?</p>
-          
-          <input type="radio" id="cremeuse-input" name="salade" value="cremeuse" checked />
-          <label for="cremeuse-input">Crémeuse</label>
 
-          <input type="radio" id="traditionnelle-input" name="salade" value="traditionnelle" />
-          <label for="traditionnelle-input">Traditionnelle</label>     
-          
+          <fieldset>
+            <legend>Crémeuse ou traditionnelle?</legend>
+            <p>
+              <input type="radio" id="cremeuse-input" name="salade" value="cremeuse" required />
+              <label for="cremeuse-input">Crémeuse</label>
+            </p>
+            <p>
+              <input type="radio" id="traditionnelle-input" name="salade" value="traditionnelle" required />
+              <label for="traditionnelle-input">Traditionnelle</label>     
+            </p>
+          </fieldset>
+
           <input type="submit" />
         </form>
 
