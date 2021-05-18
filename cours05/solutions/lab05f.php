@@ -66,9 +66,9 @@
           exit;
         }
 
-        $dateArrivee = $_POST['dateArrivee'];
+        $dateArrivee = htmlspecialchars($_POST['dateArrivee']);
         $nombreNuits = $_POST['nombreNuits'];
-        $typeChambre = $_POST['typeChambre'];
+        $typeChambre = htmlspecialchars($_POST['typeChambre']);
         $nombreAdultes = $_POST['adultes'];
         $nombreEnfants = $_POST['enfants'];
 
