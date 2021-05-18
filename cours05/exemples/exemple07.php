@@ -6,6 +6,12 @@
   <body>
     <?php
       if (isset($_POST['prenom']) && isset($_POST['nom'])) {
+        /*
+          Rien n'empêche l'utilisateur de saisir du HTML dans les champs d'un formulaire.
+          Cela peut constituer un risque de sécurité, surtout s'il utilise des balises <script></script>.
+          htmlspecialchars() permet de remplacer les < et > par des &lt; et &gt;, rendant ainsi le
+          HTML inoffensif.
+        */
         $prenom = htmlspecialchars($_POST['prenom']);
         $nom = htmlspecialchars($_POST['nom']);
   
