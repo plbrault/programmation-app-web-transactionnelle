@@ -12,8 +12,7 @@
         echo "<p>Bonjour <strong>$prenom $nom</strong>!</p>";
         
         echo '<a href="exemple07.php">&lt; Retour</a>';
-      }
-      else {
+      } else {
         ?>
 
         <form action="exemple07.php" method="POST">
