@@ -48,7 +48,7 @@
           case '/':
             echo "$nombre1 / $nombre2 = " . ($nombre1 / $nombre2);
             break;
-          case '%': // Doit être pasés comme « %25 » dans l'URL
+          case '%': // Doit être passés comme « %25 » dans l'URL
             echo "$nombre1 % $nombre2 = " . ($nombre1 % $nombre2);
             break;
           default:
