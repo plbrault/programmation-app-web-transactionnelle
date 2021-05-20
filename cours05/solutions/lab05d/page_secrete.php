@@ -5,7 +5,7 @@
   </head>
   <body>
     <?php
-      if (!$_POST['motDePasse']) {
+      if (!isset($_POST['motDePasse'])) {
         echo 'Cette page est secrète.';
         exit;
       }
