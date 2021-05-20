@@ -3,11 +3,7 @@
     if ($min % 2 === 1) {
       $min++;
     }
-    $nombresPairs = [];
-    for ($i = $min; $i <= $max; $i += 2) {
-      array_push($nombresPairs, $i);
-    }
-    return $nombresPairs;
+    return range($min, $max, 2); // Utilisation d'une fonction déjà existante dans PHP
   }
 
   function afficherTableau($tableau) {
