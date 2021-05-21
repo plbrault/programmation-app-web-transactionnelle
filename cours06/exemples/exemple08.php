@@ -50,7 +50,7 @@
         $motDePasse = $_POST['motDePasse'];
 
         if (verifierMotDePasse($utilisateur, $motDePasse)) {
-          echo "<p>Bonjour <strong>$utilisateur</strong> !</p>";
+          echo "<p>Bonjour <strong>" . htmlspecialchars($utilisateur) . "</strong> !</p>";
         } else {
           echo "<p>Nom d'utilisateur ou mot de passe invalide.</p>";
           afficherFormulaire();
