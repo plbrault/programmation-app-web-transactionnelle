@@ -42,9 +42,7 @@
     </style>
   </head>
   <body>
-    <?php
-      $afficherFormulaire = true;
-      
+    <?php   
       if (isset($_POST['submit'])) {
         if (!isset($_POST['province']) || !isset($provinces[$_POST['province']])) {
           exit;
