@@ -27,6 +27,8 @@
           echo "[$this->code] $this->nom, $this->prenom";
         }
 
+        // Accesseurs
+
         function getCode() {
           return $this->code;
         }
