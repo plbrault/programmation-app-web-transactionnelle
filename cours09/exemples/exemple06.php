@@ -17,7 +17,7 @@
         // Constructeur
         function __construct($code, $nom, $prenom) {
           /**
-           * **************************** NOUVEAUTÉ ICI! **************************************************************
+           * ==================================== NOUVEAUTÉ =========================================================== 
            * 
            * On profite du fait qu'on a créé un mutateur avec une validation pour l'utiliser dans le constructeur afin
            * que la même validation soit effectuée!
