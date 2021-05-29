@@ -74,7 +74,8 @@
         $etudiant = new Etudiant($code, 'Crête', 'Stéphane');
       } catch (Exception $e) {
         // Le code placé à l'intérieur du « catch » s'exécutera uniquement si le code du « Try » provoque une exception
-        echo $e->getMessage();
+        echo '<p>' . $e->getMessage() . '</p>'; // getMessage est une méthode de la classe
+        $etudiant = new Etudiant('000000000', 'Crête', 'Stéphane');
       }
 
       $etudiant->afficher();
