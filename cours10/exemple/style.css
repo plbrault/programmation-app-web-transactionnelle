@@ -1,0 +1,7 @@
+.ligne-donnees {
+  cursor: pointer;
+}
+
+.ligne-donnees:hover {
+  background-color: gray;
+}
