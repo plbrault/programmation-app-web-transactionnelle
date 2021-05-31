@@ -21,7 +21,7 @@
     <h1>Liste de contacts</h1>
 
     <p>
-      <a href="ajouter.php">Ajouter un contact</a>
+      <a href="/cours10/exemple/ajouter.php">Ajouter un contact</a>
     </p>
 
     <table>
