@@ -88,6 +88,11 @@
           <link rel="stylesheet" href="/cours10/exemple/style.css"> 
         </head>
         <body>
+        <p>
+          <a href="/cours10/exemple/">Contacts</a>
+            &nbsp;/&nbsp;
+            Nouveau contact
+          </p>          
           <h1>Nouveau contact</h1>
           <form action="ajouter.php" method="POST">
             <p>
@@ -132,7 +137,7 @@
               <label for="courriel_pro_input">Professionnelle:</label>
               <input type="text" id="courriel_pro_input" name="courrielPro" />
             </p>
-            
+
             <input type="submit" name="submit" value="Soumettre" />
           </form>
         </body>

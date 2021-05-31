@@ -40,9 +40,9 @@
     <p>
       <a href="/cours10/exemple/">Contacts</a>
       &nbsp;/&nbsp;
-      <?= $contact['nom'] ?>, <?= $contact['prenom'] ?>
+      <?= $contact['nom'] . ', ' . $contact['prenom'] ?>
     </p>
-    <h1><?= $contact['nom'] ?>, <?= $contact['prenom'] ?></h1>   
+    <h1><?= $contact['nom'] . ', ' . $contact['prenom'] ?></h1>   
 
     <h2>Numéros de téléphone</h2>
     <?php

@@ -196,6 +196,11 @@
           <link rel="stylesheet" href="/cours10/exemple/style.css"> 
         </head>
         <body>
+        <p>
+          <a href="/cours10/exemple/">Contacts</a>
+            &nbsp;/&nbsp;
+            <?= $contact['nom'] . ', ' . $contact['prenom'] ?>
+          </p>
           <h1><?= 'Modifier « ' . $contact['nom']  . ', ' . $contact['prenom'] . ' »' ?></h1>
           <form action="modifier.php?id=<?= $idContact ?>" method="POST">
             <p>
@@ -246,6 +251,7 @@
             
             <input type="submit" name="submit" value="Soumettre" />
           </form>
+          <a href="/cours10/exemple/afficher.php?id=<?= $idContact ?>">Annuler</a>
         </body>
       </html>
     <?php
