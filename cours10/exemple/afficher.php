@@ -104,7 +104,7 @@
         }
         echo '</ul>';
       } else {
-        echo '<p>Aucun</p>';
+        echo '<p>Aucune</p>';
       }
 
       $requete->closeCursor();
