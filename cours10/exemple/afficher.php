@@ -112,8 +112,12 @@
 
     <p>
       <a href="modifier.php?id=<?= $idContact ?>">Modifier</a>
-      &nbsp;
-      <a href="supprimer.php?id=<?= $idContact ?>">Supprimer</a>
+      <a
+        onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
+        href="supprimer.php?id=<?= $idContact ?>"
+      >
+        Supprimer
+      </a>
     </p>
   </body>
 </html>
