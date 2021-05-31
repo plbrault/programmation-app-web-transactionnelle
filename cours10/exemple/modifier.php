@@ -92,7 +92,7 @@
     $numerosTelForm = [];
     $numerosTelForm['DOM'] = $_POST['numeroTelDom'];
     $numerosTelForm['CEL'] = $_POST['numeroTelCel'];
-    $numerosTelForm['TRV'] = $_POST['numeroTelTrvForm'];
+    $numerosTelForm['TRV'] = $_POST['numeroTelTrv'];
 
     $courrielsForm = [];
     $courrielsForm['PER'] = $_POST['courrielPer'];
@@ -133,14 +133,14 @@
       $typeNumeroTel = $donneesTypeNumeroTel['code'];
 
       // Si un champ de coordonnée a été vidé, supprimer la donnée.
-      if (isset($numerosTel[$typeAdresse]) && empty($numerosTelForm[$typeNumeroTel])) {
+      if (isset($numerosTel[$typeNumeroTel]) && empty($numerosTelForm[$typeNumeroTel])) {
         $requete = $bdd->prepare("DELETE FROM numeros_tel WHERE contact_id = ? AND type_numero_tel = '$typeNumeroTel'");
         $requete->execute([ $idContact ]);
       }
       // Si une coordonnée a été ajoutée, insérer la donnée.
       else if (!isset($numerosTel[$typeNumeroTel]) && !empty($numerosTelForm[$typeNumeroTel])) {
         $requete = $bdd->prepare("INSERT INTO numeros_tel (contact_id, type_numero_tel, numero_tel) VALUES (?, '$typeNumeroTel', ?)");
-        $requete->execute([ $idContact, $numerosTel[$typeNumeroTel] ]);
+        $requete->execute([ $idContact, $numerosTelForm[$typeNumeroTel] ]);
       }
       // Si une coordonnée a été modifiée, mettre à jour la donnée.
       else if ($numerosTel[$typeNumeroTel] !== $numerosTelForm[$typeNumeroTel]) {
