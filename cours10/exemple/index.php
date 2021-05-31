@@ -47,11 +47,11 @@
                   <?= $contact['prenom'] ?>
                 </td>
                 <td>
-                  <a href="modifier.php?id=<?= $contact['id'] ?>">Modifier</a>
+                  <a href="/cours10/exemple/modifier.php?id=<?= $contact['id'] ?>">Modifier</a>
                   &nbsp;
                   <a
                     onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
-                    href="supprimer.php?id=<?= $contact['id'] ?>"
+                    href="/cours10/exemple/supprimer.php?id=<?= $contact['id'] ?>"
                   >
                     Supprimer
                   </a>
