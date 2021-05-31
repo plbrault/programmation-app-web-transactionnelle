@@ -104,16 +104,6 @@
               <input type="text" id="prenom_input" name="prenom" required />
             </p>
 
-            <h2>Adresses</h2>
-            <p>
-              <label for="adresse_dom_input">Domicile:</label>
-              <input type="text" id="adresse_dom_input" name="adresseDom" />
-            </p>              
-            <p>
-              <label for="adresse_trv_input">Travail:</label>
-              <input type="text" id="adresse_trv_input" name="adresseTrv" />              
-            </p>
-
             <h2>Numéros de téléphone</h2>
             <p>
               <label for="numero_tel_dom_input">Domicile:</label>
@@ -126,6 +116,16 @@
             <p>
               <label for="numero_tel_trv_input">Travail:</label>
               <input type="text" id="numero_tel_trv_input" name="numeroTelTrv" />              
+            </p>
+
+            <h2>Adresses</h2>
+            <p>
+              <label for="adresse_dom_input">Domicile:</label>
+              <input type="text" id="adresse_dom_input" name="adresseDom" />
+            </p>              
+            <p>
+              <label for="adresse_trv_input">Travail:</label>
+              <input type="text" id="adresse_trv_input" name="adresseTrv" />              
             </p>
 
             <h2>Adresses courriel</h2>

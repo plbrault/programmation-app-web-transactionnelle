@@ -212,19 +212,6 @@
               <input type="text" id="prenom_input" name="prenom" value="<?= $contact['prenom'] ?>" required />
             </p>
 
-            <h2>Adresses</h2>
-            <?php
-
-            ?>
-            <p>
-              <label for="adresse_dom_input">Domicile:</label>
-              <input type="text" id="adresse_dom_input" name="adresseDom" value="<?= isset($adresses['DOM']) ? $adresses['DOM'] : '' ?>" />
-            </p>              
-            <p>
-              <label for="adresse_trv_input">Travail:</label>
-              <input type="text" id="adresse_trv_input" name="adresseTrv" value="<?= isset($adresses['TRV']) ? $adresses['TRV'] : '' ?>" />              
-            </p>
-
             <h2>Numéros de téléphone</h2>
             <p>
               <label for="numero_tel_dom_input">Domicile:</label>
@@ -237,6 +224,18 @@
             <p>
               <label for="numero_tel_trv_input">Travail:</label>
               <input type="text" id="numero_tel_trv_input" name="numeroTelTrv" value="<?= isset($numerosTel['TRV']) ? $numerosTel['TRV'] : '' ?>" />              
+            </p>
+
+            <h2>Adresses</h2>
+            <?php
+            ?>
+            <p>
+              <label for="adresse_dom_input">Domicile:</label>
+              <input type="text" id="adresse_dom_input" name="adresseDom" value="<?= isset($adresses['DOM']) ? $adresses['DOM'] : '' ?>" />
+            </p>              
+            <p>
+              <label for="adresse_trv_input">Travail:</label>
+              <input type="text" id="adresse_trv_input" name="adresseTrv" value="<?= isset($adresses['TRV']) ? $adresses['TRV'] : '' ?>" />              
             </p>
 
             <h2>Adresses courriel</h2>
