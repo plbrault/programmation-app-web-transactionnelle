@@ -2,7 +2,7 @@ body {
   padding: 10px;
 }
 
-h1 {
+h1, body > p {
   text-align: center;
 }
 
@@ -17,6 +17,7 @@ main > * {
 
 a, a:visited {
   color: blue;
+  text-decoration: none;
 }
 
 thead  {
@@ -46,4 +47,9 @@ tbody tr:nth-child(even) {
 
 .ligne-donnees:hover {
   background-color: lightcyan;
+}
+
+.col-actions {
+  width: 10%;
+  text-align: center;
 }

@@ -30,7 +30,7 @@
           <tr>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -47,14 +47,16 @@
                   <td>
                     <?= $contact['prenom'] ?>
                   </td>
-                  <td>
-                    <a href="/cours10/exemple/modifier.php?id=<?= $contact['id'] ?>">Modifier</a>
+                  <td class="col-actions">
+                    <a href="/cours10/exemple/modifier.php?id=<?= $contact['id'] ?>">
+                      ✏️
+                    </a>
                     &nbsp;
                     <a
                       onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
                       href="/cours10/exemple/supprimer.php?id=<?= $contact['id'] ?>"
                     >
-                      Supprimer
+                      ❌
                     </a>
                   </td>
                 </tr>

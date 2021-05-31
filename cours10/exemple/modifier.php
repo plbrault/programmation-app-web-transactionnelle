@@ -202,6 +202,9 @@
             <?= $contact['nom'] . ', ' . $contact['prenom'] ?>
           </p>
           <h1><?= 'Modifier « ' . $contact['nom']  . ', ' . $contact['prenom'] . ' »' ?></h1>
+          <p>
+            <a href="/cours10/exemple/afficher.php?id=<?= $idContact ?>">Annuler</a>
+          </p>          
           <main>
             <form action="modifier.php?id=<?= $idContact ?>" method="POST">
               <p>
@@ -251,9 +254,6 @@
               
               <input type="submit" name="submit" value="Soumettre" />
             </form>
-            <p>
-              <a href="/cours10/exemple/afficher.php?id=<?= $idContact ?>">Annuler</a>
-            </p>
           </main>
         </body>
       </html>

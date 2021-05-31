@@ -44,6 +44,19 @@
     </p>
     <h1><?= $contact['nom'] . ', ' . $contact['prenom'] ?></h1>   
     
+    <p>
+      <a href="modifier.php?id=<?= $idContact ?>">
+        ✏️
+      </a>
+      &nbsp;
+      <a
+        onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
+        href="/cours10/exemple/supprimer.php?id=<?= $idContact ?>"
+      >
+        ❌
+      </a>
+    </p>
+
     <main>
       <h2>Numéros de téléphone</h2>
       <?php
@@ -110,18 +123,6 @@
 
         $requete->closeCursor();
       ?>
-
-      <p>
-        <a href="modifier.php?id=<?= $idContact ?>">Modifier</a>
-        &nbsp;
-        <a
-          onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
-          href="/cours10/exemple/supprimer.php?id=<?= $idContact ?>"
-        >
-          Supprimer
-        </a>
-      </p>
-
     </main>
   </body>
 </html>
