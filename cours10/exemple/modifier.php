@@ -166,7 +166,7 @@
         $requete->execute([ $idContact, $courrielsForm[$typeCourriel] ]);
       }
       // Si une coordonnée a été modifiée, mettre à jour la donnée.
-      else if ($courriels[$typeCourriel] !== $courrielsForm[$typeCourriel]) {
+      else if (isset($courriels[$typeCourriel]) && $courriels[$typeCourriel] !== $courrielsForm[$typeCourriel]) {
         $requete = $bdd->prepare("UPDATE courriels SET courriel = ? WHERE contact_id = ? AND type_courriel = '$typeCourriel'");
         $requete->execute([ $courrielsForm[$typeCourriel], $idContact ]);
       }
@@ -197,7 +197,7 @@
         </head>
         <body>
           <h1><?= 'Modifier « ' . $contact['nom']  . ', ' . $contact['prenom'] . ' »' ?></h1>
-          <form action="ajouter.php" method="POST">
+          <form action="modifier.php?id=<?= $idContact ?>" method="POST">
             <p>
               <label for="nom_input">Nom:</label>
               <input type="text" id="nom_input" name="nom" value="<?= $contact['nom'] ?>" required />
