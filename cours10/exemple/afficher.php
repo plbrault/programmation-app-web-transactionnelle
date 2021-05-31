@@ -43,81 +43,84 @@
       <?= $contact['nom'] . ', ' . $contact['prenom'] ?>
     </p>
     <h1><?= $contact['nom'] . ', ' . $contact['prenom'] ?></h1>   
+    
+    <main>
+      <h2>Numéros de téléphone</h2>
+      <?php
+        $requete = $bdd->prepare('SELECT numero_tel, types_numero_tel.description FROM numeros_tel JOIN types_numero_tel ON types_numero_tel.code = numeros_tel.type_numero_tel WHERE contact_id = ?');
+        $requete->execute(array($idContact));
 
-    <h2>Numéros de téléphone</h2>
-    <?php
-      $requete = $bdd->prepare('SELECT numero_tel, types_numero_tel.description FROM numeros_tel JOIN types_numero_tel ON types_numero_tel.code = numeros_tel.type_numero_tel WHERE contact_id = ?');
-      $requete->execute(array($idContact));
-
-      if ($requete->rowCount() > 0) {
-        echo '<ul>';
-        while ($donneesNumeroTel = $requete->fetch()) {
-          echo '<li><strong>'
-            . $donneesNumeroTel['description']
-            . ': </strong>'
-            . $donneesNumeroTel['numero_tel']
-            . '</li>';
+        if ($requete->rowCount() > 0) {
+          echo '<ul>';
+          while ($donneesNumeroTel = $requete->fetch()) {
+            echo '<li><strong>'
+              . $donneesNumeroTel['description']
+              . ': </strong>'
+              . $donneesNumeroTel['numero_tel']
+              . '</li>';
+          }
+          echo '</ul>';
+        } else {
+          echo '<p>Aucun</p>';
         }
-        echo '</ul>';
-      } else {
-        echo '<p>Aucun</p>';
-      }
 
-      $requete->closeCursor();
-    ?>
+        $requete->closeCursor();
+      ?>
 
-    <h2>Adresses</h2>
-    <?php
-      $requete = $bdd->prepare('SELECT adresse, types_adresse.description FROM adresses JOIN types_adresse ON types_adresse.code = adresses.type_adresse WHERE contact_id = ?');
-      $requete->execute(array($idContact));
+      <h2>Adresses</h2>
+      <?php
+        $requete = $bdd->prepare('SELECT adresse, types_adresse.description FROM adresses JOIN types_adresse ON types_adresse.code = adresses.type_adresse WHERE contact_id = ?');
+        $requete->execute(array($idContact));
 
-      if ($requete->rowCount() > 0) {
-        echo '<ul>';
-        while ($donneesNumeroTel = $requete->fetch()) {
-          echo '<li><strong>'
-            . $donneesNumeroTel['description']
-            . ': </strong>'
-            . $donneesNumeroTel['adresse']
-            . '</li>';
+        if ($requete->rowCount() > 0) {
+          echo '<ul>';
+          while ($donneesNumeroTel = $requete->fetch()) {
+            echo '<li><strong>'
+              . $donneesNumeroTel['description']
+              . ': </strong>'
+              . $donneesNumeroTel['adresse']
+              . '</li>';
+          }
+          echo '</ul>';
+        } else {
+          echo '<p>Aucun</p>';
         }
-        echo '</ul>';
-      } else {
-        echo '<p>Aucun</p>';
-      }
 
-      $requete->closeCursor();
-    ?>
+        $requete->closeCursor();
+      ?>
 
-    <h2>Adresses courriel</h2>
-    <?php
-      $requete = $bdd->prepare('SELECT courriel, types_courriel.description FROM courriels JOIN types_courriel ON types_courriel.code = courriels.type_courriel WHERE contact_id = ?');
-      $requete->execute(array($idContact));
+      <h2>Adresses courriel</h2>
+      <?php
+        $requete = $bdd->prepare('SELECT courriel, types_courriel.description FROM courriels JOIN types_courriel ON types_courriel.code = courriels.type_courriel WHERE contact_id = ?');
+        $requete->execute(array($idContact));
 
-      if ($requete->rowCount() > 0) {
-        echo '<ul>';
-        while ($donneesNumeroTel = $requete->fetch()) {
-          echo '<li><strong>'
-            . $donneesNumeroTel['description']
-            . ': </strong>'
-            . $donneesNumeroTel['courriel']
-            . '</li>';
+        if ($requete->rowCount() > 0) {
+          echo '<ul>';
+          while ($donneesNumeroTel = $requete->fetch()) {
+            echo '<li><strong>'
+              . $donneesNumeroTel['description']
+              . ': </strong>'
+              . $donneesNumeroTel['courriel']
+              . '</li>';
+          }
+          echo '</ul>';
+        } else {
+          echo '<p>Aucune</p>';
         }
-        echo '</ul>';
-      } else {
-        echo '<p>Aucune</p>';
-      }
 
-      $requete->closeCursor();
-    ?>
+        $requete->closeCursor();
+      ?>
 
-    <p>
-      <a href="modifier.php?id=<?= $idContact ?>">Modifier</a>
-      <a
-        onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
-        href="/cours10/exemple/supprimer.php?id=<?= $idContact ?>"
-      >
-        Supprimer
-      </a>
-    </p>
+      <p>
+        <a href="modifier.php?id=<?= $idContact ?>">Modifier</a>
+        <a
+          onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
+          href="/cours10/exemple/supprimer.php?id=<?= $idContact ?>"
+        >
+          Supprimer
+        </a>
+      </p>
+
+    </main>
   </body>
 </html>

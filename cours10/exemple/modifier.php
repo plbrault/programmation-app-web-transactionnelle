@@ -202,55 +202,59 @@
             <?= $contact['nom'] . ', ' . $contact['prenom'] ?>
           </p>
           <h1><?= 'Modifier « ' . $contact['nom']  . ', ' . $contact['prenom'] . ' »' ?></h1>
-          <form action="modifier.php?id=<?= $idContact ?>" method="POST">
-            <p>
-              <label for="nom_input">Nom:</label>
-              <input type="text" id="nom_input" name="nom" value="<?= $contact['nom'] ?>" required />
-            </p>
-            <p>
-              <label for="nom_input">Prénom:</label>
-              <input type="text" id="prenom_input" name="prenom" value="<?= $contact['prenom'] ?>" required />
-            </p>
+          <main>
+            <form action="modifier.php?id=<?= $idContact ?>" method="POST">
+              <p>
+                <label for="nom_input">Nom:</label>
+                <input type="text" id="nom_input" name="nom" value="<?= $contact['nom'] ?>" required />
+              </p>
+              <p>
+                <label for="nom_input">Prénom:</label>
+                <input type="text" id="prenom_input" name="prenom" value="<?= $contact['prenom'] ?>" required />
+              </p>
 
-            <h2>Numéros de téléphone</h2>
-            <p>
-              <label for="numero_tel_dom_input">Domicile:</label>
-              <input type="text" id="numero_tel_dom_input" name="numeroTelDom" value="<?= isset($numerosTel['DOM']) ? $numerosTel['DOM'] : '' ?>" />
-            </p>
-            <p>
-              <label for="numero_tel_cel_input">Cellulaire:</label>
-              <input type="text" id="numero_tel_cel_input" name="numeroTelCel" value="<?= isset($numerosTel['CEL']) ? $numerosTel['CEL'] : '' ?>" />              
-            </p>                          
-            <p>
-              <label for="numero_tel_trv_input">Travail:</label>
-              <input type="text" id="numero_tel_trv_input" name="numeroTelTrv" value="<?= isset($numerosTel['TRV']) ? $numerosTel['TRV'] : '' ?>" />              
-            </p>
+              <h2>Numéros de téléphone</h2>
+              <p>
+                <label for="numero_tel_dom_input">Domicile:</label>
+                <input type="text" id="numero_tel_dom_input" name="numeroTelDom" value="<?= isset($numerosTel['DOM']) ? $numerosTel['DOM'] : '' ?>" />
+              </p>
+              <p>
+                <label for="numero_tel_cel_input">Cellulaire:</label>
+                <input type="text" id="numero_tel_cel_input" name="numeroTelCel" value="<?= isset($numerosTel['CEL']) ? $numerosTel['CEL'] : '' ?>" />              
+              </p>                          
+              <p>
+                <label for="numero_tel_trv_input">Travail:</label>
+                <input type="text" id="numero_tel_trv_input" name="numeroTelTrv" value="<?= isset($numerosTel['TRV']) ? $numerosTel['TRV'] : '' ?>" />              
+              </p>
 
-            <h2>Adresses</h2>
-            <?php
-            ?>
-            <p>
-              <label for="adresse_dom_input">Domicile:</label>
-              <input type="text" id="adresse_dom_input" name="adresseDom" value="<?= isset($adresses['DOM']) ? $adresses['DOM'] : '' ?>" />
-            </p>              
-            <p>
-              <label for="adresse_trv_input">Travail:</label>
-              <input type="text" id="adresse_trv_input" name="adresseTrv" value="<?= isset($adresses['TRV']) ? $adresses['TRV'] : '' ?>" />              
-            </p>
+              <h2>Adresses</h2>
+              <?php
+              ?>
+              <p>
+                <label for="adresse_dom_input">Domicile:</label>
+                <input type="text" id="adresse_dom_input" name="adresseDom" value="<?= isset($adresses['DOM']) ? $adresses['DOM'] : '' ?>" />
+              </p>              
+              <p>
+                <label for="adresse_trv_input">Travail:</label>
+                <input type="text" id="adresse_trv_input" name="adresseTrv" value="<?= isset($adresses['TRV']) ? $adresses['TRV'] : '' ?>" />              
+              </p>
 
-            <h2>Adresses courriel</h2>
+              <h2>Adresses courriel</h2>
+              <p>
+                <label for="courriel_per_input">Personnelle:</label>
+                <input type="text" id="courriel_per_input" name="courrielPer" value="<?= isset($courriels['PER']) ? $courriels['PER'] : '' ?>" />
+              </p>
+              <p>
+                <label for="courriel_pro_input">Professionnelle:</label>
+                <input type="text" id="courriel_pro_input" name="courrielPro" value="<?= isset($courriels['PRO']) ? $courriels['PRO'] : '' ?>" />
+              </p>
+              
+              <input type="submit" name="submit" value="Soumettre" />
+            </form>
             <p>
-              <label for="courriel_per_input">Personnelle:</label>
-              <input type="text" id="courriel_per_input" name="courrielPer" value="<?= isset($courriels['PER']) ? $courriels['PER'] : '' ?>" />
+              <a href="/cours10/exemple/afficher.php?id=<?= $idContact ?>">Annuler</a>
             </p>
-            <p>
-              <label for="courriel_pro_input">Professionnelle:</label>
-              <input type="text" id="courriel_pro_input" name="courrielPro" value="<?= isset($courriels['PRO']) ? $courriels['PRO'] : '' ?>" />
-            </p>
-            
-            <input type="submit" name="submit" value="Soumettre" />
-          </form>
-          <a href="/cours10/exemple/afficher.php?id=<?= $idContact ?>">Annuler</a>
+          </main>
         </body>
       </html>
     <?php
