@@ -19,6 +19,11 @@
   </head>
   <body>
     <h1>Liste de contacts</h1>
+
+    <p>
+      <a href="ajouter.php">Ajouter un contact</a>
+    </p>
+
     <table>
       <thead>
         <tr>
