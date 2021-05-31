@@ -9,18 +9,71 @@
   <body>
     <?php
       if (isset($_POST['submit'])) {
+        if (
+          !isset($_POST['nom'])
+          || !isset($_POST['prenom'])
+          || !isset($_POST['adresseDom'])
+          || !isset($_POST['adresseTrv'])
+          || !isset($_POST['numeroTelDom'])
+          || !isset($_POST['numeroTelCel'])
+          || !isset($_POST['numeroTelTrv'])
+          || !isset($_POST['courrielPer'])
+          || !isset($_POST['courrielPro'])
+        ) {
+          exit;
+        }
+        if (empty($_POST['nom']) || empty($_POST['prenom'])) {
+          exit;
+        }
 
+        include_once('connexionBD.php');
+
+        $requete = $bdd->prepare('INSERT INTO contacts(nom, prenom) VALUES(?, ?) RETURNING id');
+        $requete->execute([ $_POST['nom'], $_POST['prenom'] ]);
+
+        $resultat = $requete->fetch();
+        $idContact = $resultat['id'];
+        $requete->closeCursor();
+
+        if (!empty($_POST['adresseDom'])) {
+          $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'DOM', ?)");
+          $requete->execute([ $_POST['adresseDom'] ]);
+        }
+        if (!empty($_POST['adresseTrv'])) {
+          $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'TRV', ?)");
+          $requete->execute([ $_POST['adresseTrv'] ]);
+        } 
+        if (!empty($_POST['numeroTelDom'])) {
+          $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'DOM', ?)");
+          $requete->execute([ $_POST['numeroTelDom'] ]);
+        }
+        if (!empty($_POST['numeroTelCel'])) {
+          $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'CEL', ?)");
+          $requete->execute([ $_POST['numeroTelCel'] ]);
+        }
+        if (!empty($_POST['numeroTelTrv'])) {
+          $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'TRV', ?)");
+          $requete->execute([ $_POST['numeroTelTrv'] ]);
+        }
+        if (!empty($_POST['courrielPer'])) {
+          $requete = $bdd->prepare("INSERT INTO courriels(contact_id, type_courriel, courriel) VALUES($idContact, 'PER', ?)");
+          $requete->execute([ $_POST['courrielPer'] ]);
+        }
+        if (!empty($_POST['courrielPer'])) {
+          $requete = $bdd->prepare("INSERT INTO courriels(contact_id, type_courriel, courriel) VALUES($idContact, 'PRO', ?)");
+          $requete->execute([ $_POST['courrielPer'] ]);
+        }                                              
       } else {
         ?>
           <h1>Nouveau contact</h1>
           <form action="ajouter.php" method="POST">
             <p>
               <label for="nom_input">Nom:</label>
-              <input type="text" id="nom_input" name="nom" />
+              <input type="text" id="nom_input" name="nom" required />
             </p>
             <p>
               <label for="nom_input">Prénom:</label>
-              <input type="text" id="prenom_input" name="prenom" />
+              <input type="text" id="prenom_input" name="prenom" required />
             </p>
 
             <h2>Adresses</h2>
