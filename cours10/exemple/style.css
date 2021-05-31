@@ -19,8 +19,25 @@ a, a:visited {
   color: blue;
 }
 
-td {
+thead  {
+  background-color: blue;
+  color: white;
+}
+
+th {
+  text-align: left;
+}
+
+th, td {
   padding: 10px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: beige;
+}
+
+tbody tr:nth-child(even) {
+  background-color: lightgray;
 }
 
 .ligne-donnees {
@@ -28,5 +45,5 @@ td {
 }
 
 .ligne-donnees:hover {
-  background-color: lightgray;
+  background-color: lightcyan;
 }
