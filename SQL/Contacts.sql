@@ -1,7 +1,7 @@
 CREATE TABLE contacts (
 	id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-	nom TEXT DEFAULT '',
-	prenom TEXT DEFAULT ''
+	nom TEXT NOT NULL,
+	prenom TEXT NOT NULL
 );
 
 CREATE TABLE types_adresse (
