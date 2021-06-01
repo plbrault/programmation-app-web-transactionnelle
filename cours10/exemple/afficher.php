@@ -51,7 +51,7 @@
       &nbsp;
       <a
         onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
-        href="/cours10/exemple/supprimer.php?id=<?= $idContact ?>"
+        href="supprimer.php?id=<?= $idContact ?>"
       >
         ❌
       </a>

@@ -8,7 +8,7 @@
     <title>
       Mes séries
     </title>
-    <link rel="stylesheet" href="/cours10/exemple/style.css"> 
+    <link rel="stylesheet" href="/cours10/solution/lab08/style.css"> 
   </head>
   <body>
     <h1>Mes séries</h1>
@@ -29,16 +29,16 @@
         <tbody>
           <?php
 
-            $reponse = $bdd->query('SELECT id, titre, diffuseurs.nom AS nom_diffuseur FROM series JOIN diffuseurs ON series.diffuseur = diffuseurs.code ORDER BY titre');
+            $reponse = $bdd->query('SELECT id, titre, diffuseurs.nom AS nomDiffuseur FROM series JOIN diffuseurs ON series.diffuseur = diffuseurs.code ORDER BY titre');
 
             while ($serie = $reponse->fetch()) {
               ?>
-                <tr class="ligne-donnees" onClick="window.location.href='/cours10/exemple/afficher.php?id=<?= $serie['id'] ?>'">
+                <tr class="ligne-donnees" onClick="window.location.href='/cours10/solution/lab08/afficher.php?id=<?= $serie['id'] ?>'">
                   <td>
                     <?= $serie['titre'] ?>
                   </td>
                   <td>
-                    <?= $serie['nom_diffuseur'] ?>
+                    <?= $serie['nomDiffuseur'] ?>
                   </td>
                   <td class="col-actions">
                     <a href="/cours10/solution/lab08/modifier.php?id=<?= $serie['id'] ?>">
