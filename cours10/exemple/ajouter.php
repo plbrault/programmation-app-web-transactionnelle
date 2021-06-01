@@ -25,6 +25,16 @@
 
     include_once('connexionBD.php');
 
+    $nom = trim($_POST['nom']); // Enlève les espaces en début et en fin de chaîne
+    $prenom = trim($_POST['prenom']);
+    $adresseDom = trim($_POST['adresseDom']);
+    $adresseTrv = trim($_POST['adresseTrv']);
+    $numeroTelDom = trim($_POST['numeroTelDom']);
+    $numeroTelCel = trim($_POST['numeroTelCel']);
+    $numeroTelTrv = trim($_POST['numeroTelTrv']);
+    $courrielPer = trim($_POST['courrielPer']);
+    $courrielPro = trim($_POST['courrielPro']);
+
     /*
       On utilise une transaction pour s'assurer que les opérations sur la BD n'aient effet
       que si toutes les requêtes réussissent.
@@ -32,39 +42,39 @@
     $bdd->beginTransaction();
 
     $requete = $bdd->prepare('INSERT INTO contacts(nom, prenom) VALUES(?, ?) RETURNING id');
-    $requete->execute([ $_POST['nom'], $_POST['prenom'] ]);
+    $requete->execute([ $nom, $prenom ]);
 
     $resultat = $requete->fetch();
     $idContact = $resultat['id'];
     $requete->closeCursor();
 
-    if (!empty($_POST['adresseDom'])) {
+    if (!empty($adresseDom)) {
       $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'DOM', ?)");
-      $requete->execute([ $_POST['adresseDom'] ]);
+      $requete->execute([ $adresseDom ]);
     }
-    if (!empty($_POST['adresseTrv'])) {
+    if (!empty($adresseTrv)) {
       $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'TRV', ?)");
-      $requete->execute([ $_POST['adresseTrv'] ]);
+      $requete->execute([ $adresseTrv ]);
     } 
-    if (!empty($_POST['numeroTelDom'])) {
+    if (!empty($numeroTelDom)) {
       $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'DOM', ?)");
-      $requete->execute([ $_POST['numeroTelDom'] ]);
+      $requete->execute([ $numeroTelDom ]);
     }
-    if (!empty($_POST['numeroTelCel'])) {
+    if (!empty($numeroTelCel)) {
       $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'CEL', ?)");
-      $requete->execute([ $_POST['numeroTelCel'] ]);
+      $requete->execute([ $numeroTelCel ]);
     }
-    if (!empty($_POST['numeroTelTrv'])) {
+    if (!empty($numeroTelTrv)) {
       $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'TRV', ?)");
-      $requete->execute([ $_POST['numeroTelTrv'] ]);
+      $requete->execute([ $numeroTelTrv ]);
     }
-    if (!empty($_POST['courrielPer'])) {
+    if (!empty($courrielPer)) {
       $requete = $bdd->prepare("INSERT INTO courriels(contact_id, type_courriel, courriel) VALUES($idContact, 'PER', ?)");
-      $requete->execute([ $_POST['courrielPer'] ]);
+      $requete->execute([ $courrielPer ]);
     }
-    if (!empty($_POST['courrielPer'])) {
+    if (!empty($courrielPro)) {
       $requete = $bdd->prepare("INSERT INTO courriels(contact_id, type_courriel, courriel) VALUES($idContact, 'PRO', ?)");
-      $requete->execute([ $_POST['courrielPer'] ]);
+      $requete->execute([ $courrielPro ]);
     }
     
     $bdd->commit(); // Fermer la transaction
