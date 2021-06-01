@@ -8,8 +8,8 @@
 
   $id = intval($_GET['id']);
 
-  $requete = $bdd->prepare('DELETE FROM contacts WHERE id = ?');
+  $requete = $bdd->prepare('DELETE FROM series WHERE id = ?');
   $requete->execute([ $id ]);
 
-  header('Location: /cours10/exemple');
+  header('Location: /cours10/solution/lab08');
 ?>
