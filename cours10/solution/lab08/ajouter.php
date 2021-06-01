@@ -50,7 +50,7 @@
           <main>
             <form action="ajouter.php" method="POST">
               <p>
-                <label for="titre_input">Nom:</label>
+                <label for="titre_input">Titre:</label>
                 <input type="text" id="titre_input" name="titre" required />
               </p>
               <p>
@@ -68,15 +68,15 @@
               </p>
               <p>
                 <label for="nbSaisons_input">Nombre de saisons:</label>
-                <input type="number" id="nbSaisons_input" name="nbSaisons" required />
+                <input type="number" id="nbSaisons_input" name="nbSaisons" />
               </p>
               <p>
                 <label for="nbEpisodes_input">Nombre d'épisodes:</label>
-                <input type="number" id="nbEpisodes_input" name="nbEpisodes" required />
+                <input type="number" id="nbEpisodes_input" name="nbEpisodes" />
               </p>
               <p>
                 <label for="nbEpisodesVus_input">Nombre d'épisodes vus:</label>
-                <input type="number" id="nbEpisodesVus_input" name="nbEpisodesVus" required />
+                <input type="number" id="nbEpisodesVus_input" name="nbEpisodesVus" />
               </p>                         
               <input type="submit" name="submit" value="Soumettre" />
             </form>

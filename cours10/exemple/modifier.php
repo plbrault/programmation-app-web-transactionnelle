@@ -101,7 +101,7 @@
     // Mise à jour nom et prénom
     if ($contact['nom'] !== $_POST['nom'] || $contact['prenom'] !== $_POST['prenom']) {
       $requete = $bdd->prepare('UPDATE contacts SET nom = ?, prenom = ? WHERE id = ?');
-      $requete->execute([ $_POST['nom'], $_POST['prenom'], $idContact ]);
+      $requete->execute([ $nomForm, $prenomForm, $idContact ]);
     }
 
     // Mise à jour des adresses
