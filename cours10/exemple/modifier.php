@@ -82,21 +82,21 @@
       exit;
     }
 
-    $nomForm = $_POST['nom'];
-    $prenomForm = $_POST['prenom'];
+    $nomForm = trim($_POST['nom']);
+    $prenomForm = trim($_POST['prenom']);
 
     $adressesForm = [];
-    $adressesForm['DOM'] = $_POST['adresseDom'];
-    $adressesForm['TRV'] = $_POST['adresseTrv'];
+    $adressesForm['DOM'] = trim($_POST['adresseDom']);
+    $adressesForm['TRV'] = trim($_POST['adresseTrv']);
 
     $numerosTelForm = [];
-    $numerosTelForm['DOM'] = $_POST['numeroTelDom'];
-    $numerosTelForm['CEL'] = $_POST['numeroTelCel'];
-    $numerosTelForm['TRV'] = $_POST['numeroTelTrv'];
+    $numerosTelForm['DOM'] = trim($_POST['numeroTelDom']);
+    $numerosTelForm['CEL'] = trim($_POST['numeroTelCel']);
+    $numerosTelForm['TRV'] = trim($_POST['numeroTelTrv']);
 
     $courrielsForm = [];
-    $courrielsForm['PER'] = $_POST['courrielPer'];
-    $courrielsForm['PRO']= $_POST['courrielPro'];
+    $courrielsForm['PER'] = trim($_POST['courrielPer']);
+    $courrielsForm['PRO']= trim($_POST['courrielPro']);
 
     // Mise à jour nom et prénom
     if ($contact['nom'] !== $_POST['nom'] || $contact['prenom'] !== $_POST['prenom']) {
