@@ -14,8 +14,8 @@ INSERT INTO diffuseurs (code, nom) VALUES
 
 CREATE TABLE series (
 	id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-	titre TEXT,
-	diffuseur CHAR(5),
+	titre TEXT NOT NULL,
+	diffuseur CHAR(5) NOT NULL,
 	nbSaisons INTEGER,
 	nbEpisodes INTEGER,
 	nbEpisodesVus INTEGER,
