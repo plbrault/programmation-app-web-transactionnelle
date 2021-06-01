@@ -38,7 +38,7 @@
                     <?= $serie['titre'] ?>
                   </td>
                   <td>
-                    <?= $serie['nomDiffuseur'] ?>
+                    <?= $serie['nomdiffuseur'] ?>
                   </td>
                   <td class="col-actions">
                     <a href="/cours10/solution/lab08/modifier.php?id=<?= $serie['id'] ?>">

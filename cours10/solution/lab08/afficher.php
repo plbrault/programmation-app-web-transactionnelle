@@ -24,7 +24,7 @@
     <title>
       <?= $serie['titre'] ?>
     </title>
-    <link rel="stylesheet" href="/cours10/solution/lab08/style.css"> 
+    <link rel="stylesheet" href="style.css"> 
   </head>
   <body>
     <p>

@@ -111,7 +111,7 @@
                 <input type="text" id="nom_input" name="nom" required />
               </p>
               <p>
-                <label for="nom_input">Prénom:</label>
+                <label for="prenom_input">Prénom:</label>
                 <input type="text" id="prenom_input" name="prenom" required />
               </p>
 

@@ -1,91 +1,34 @@
 <?php
-
-  /*
-    On place le code de traitement des données du formulaire avant tout code HTML,
-    pour la raison indiquée plus bas.
-  */
+  include_once('connexionBD.php');
 
   if (isset($_POST['submit'])) {
     if (
-      !isset($_POST['nom'])
-      || !isset($_POST['prenom'])
-      || !isset($_POST['adresseDom'])
-      || !isset($_POST['adresseTrv'])
-      || !isset($_POST['numeroTelDom'])
-      || !isset($_POST['numeroTelCel'])
-      || !isset($_POST['numeroTelTrv'])
-      || !isset($_POST['courrielPer'])
-      || !isset($_POST['courrielPro'])
+      !isset($_POST['titre'])
+      || !isset($_POST['diffuseur'])
+      || !isset($_POST['nbSaisons'])
+      || !isset($_POST['nbEpisodes'])
+      || !isset($_POST['nbEpisodesVus'])
     ) {
       exit;
     }
-    if (empty($_POST['nom']) || empty($_POST['prenom'])) {
+    if (empty($_POST['titre']) || empty($_POST['diffuseur'])) {
       exit;
     }
 
-    include_once('connexionBD.php');
+    $titre = trim($_POST['titre']);
+    $diffuseur = trim($_POST['diffuseur']);
+    $nbSaisons = intval($_POST['nbSaisons']);
+    $nbEpisodes = intval($_POST['nbEpisodes']);
+    $nbEpisodesVus = intval($_POST['nbEpisodesVus']);
 
-    $nom = trim($_POST['nom']); // Enlève les espaces en début et en fin de chaîne
-    $prenom = trim($_POST['prenom']);
-    $adresseDom = trim($_POST['adresseDom']);
-    $adresseTrv = trim($_POST['adresseTrv']);
-    $numeroTelDom = trim($_POST['numeroTelDom']);
-    $numeroTelCel = trim($_POST['numeroTelCel']);
-    $numeroTelTrv = trim($_POST['numeroTelTrv']);
-    $courrielPer = trim($_POST['courrielPer']);
-    $courrielPro = trim($_POST['courrielPro']);
-
-    /*
-      On utilise une transaction pour s'assurer que les opérations sur la BD n'aient effet
-      que si toutes les requêtes réussissent.
-    */
-    $bdd->beginTransaction();
-
-    $requete = $bdd->prepare('INSERT INTO contacts(nom, prenom) VALUES(?, ?) RETURNING id');
-    $requete->execute([ $nom, $prenom ]);
+    $requete = $bdd->prepare('INSERT INTO series(titre, diffuseur, nbSaisons, nbEpisodes, nbEpisodesVus) VALUES(?, ?, ?, ?, ?) RETURNING id');
+    $requete->execute([ $titre, $diffuseur, $nbSaisons, $nbEpisodes, $nbEpisodesVus ]);
 
     $resultat = $requete->fetch();
-    $idContact = $resultat['id'];
+    $idSerie = $resultat['id'];
     $requete->closeCursor();
 
-    if (!empty($adresseDom)) {
-      $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'DOM', ?)");
-      $requete->execute([ $adresseDom ]);
-    }
-    if (!empty($adresseTrv)) {
-      $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'TRV', ?)");
-      $requete->execute([ $adresseTrv ]);
-    } 
-    if (!empty($numeroTelDom)) {
-      $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'DOM', ?)");
-      $requete->execute([ $numeroTelDom ]);
-    }
-    if (!empty($numeroTelCel)) {
-      $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'CEL', ?)");
-      $requete->execute([ $numeroTelCel ]);
-    }
-    if (!empty($numeroTelTrv)) {
-      $requete = $bdd->prepare("INSERT INTO numeros_tel(contact_id, type_numero_tel, numero_tel) VALUES($idContact, 'TRV', ?)");
-      $requete->execute([ $numeroTelTrv ]);
-    }
-    if (!empty($courrielPer)) {
-      $requete = $bdd->prepare("INSERT INTO courriels(contact_id, type_courriel, courriel) VALUES($idContact, 'PER', ?)");
-      $requete->execute([ $courrielPer ]);
-    }
-    if (!empty($courrielPro)) {
-      $requete = $bdd->prepare("INSERT INTO courriels(contact_id, type_courriel, courriel) VALUES($idContact, 'PRO', ?)");
-      $requete->execute([ $courrielPro ]);
-    }
-    
-    $bdd->commit(); // Fermer la transaction
-
-    /*
-      Redirection vers l'affichage du contact nouvellement créé
-      L'utilisation de la fonction `header` exige de la placer avant l'envoi de tout contenu au navigateur,
-      incluant par des lignes de code HTML.
-      Voir la documentation pour plus d'informations: https://www.php.net/manual/fr/function.header.php
-    */
-    header("Location: /cours10/exemple/afficher.php?id=$idContact");
+    header("Location: /cours10/solution/lab08/afficher.php?id=$idSerie");
 
   } else {
     ?>
@@ -93,62 +36,48 @@
       <html>
         <head>
           <title>
-            Nouveau contact
+            Nouvelle série
           </title>
-          <link rel="stylesheet" href="/cours10/exemple/style.css"> 
+          <link rel="stylesheet" href="style.css"> 
         </head>
         <body>
         <p>
-          <a href="/cours10/exemple/">Contacts</a>
+          <a href="/cours10/solution/lab08">Séries</a>
             &nbsp;/&nbsp;
-            Nouveau contact
+            Nouvelle série
           </p>          
-          <h1>Nouveau contact</h1>
+          <h1>Nouvelle série</h1>
           <main>
             <form action="ajouter.php" method="POST">
               <p>
-                <label for="nom_input">Nom:</label>
-                <input type="text" id="nom_input" name="nom" required />
+                <label for="titre_input">Nom:</label>
+                <input type="text" id="titre_input" name="titre" required />
               </p>
               <p>
-                <label for="nom_input">Prénom:</label>
-                <input type="text" id="prenom_input" name="prenom" required />
-              </p>
-
-              <h2>Numéros de téléphone</h2>
-              <p>
-                <label for="numero_tel_dom_input">Domicile:</label>
-                <input type="text" id="numero_tel_dom_input" name="numeroTelDom" />
-              </p>
-              <p>
-                <label for="numero_tel_cel_input">Cellulaire:</label>
-                <input type="text" id="numero_tel_cel_input" name="numeroTelCel" />              
-              </p>                          
-              <p>
-                <label for="numero_tel_trv_input">Travail:</label>
-                <input type="text" id="numero_tel_trv_input" name="numeroTelTrv" />              
-              </p>
-
-              <h2>Adresses</h2>
-              <p>
-                <label for="adresse_dom_input">Domicile:</label>
-                <input type="text" id="adresse_dom_input" name="adresseDom" />
-              </p>              
-              <p>
-                <label for="adresse_trv_input">Travail:</label>
-                <input type="text" id="adresse_trv_input" name="adresseTrv" />              
-              </p>
-
-              <h2>Adresses courriel</h2>
-              <p>
-                <label for="courriel_per_input">Personnelle:</label>
-                <input type="text" id="courriel_per_input" name="courrielPer" />
+                <label for="diffuseur_select">Diffuseur:</label>
+                <select id="diffuseur_input" name="diffuseur" required>
+                  <option value="">Sélectionner un diffuseur</option>
+                  <?php
+                    $reponse = $bdd->query('SELECT code, nom FROM diffuseurs ORDER BY nom');
+                    while ($diffuseur = $reponse->fetch()) {
+                      echo '<option value="' . $diffuseur['code'] . '">' . $diffuseur['nom'] . '</option>';
+                    }
+                    $reponse->closeCursor();
+                  ?>
+                </select>
               </p>
               <p>
-                <label for="courriel_pro_input">Professionnelle:</label>
-                <input type="text" id="courriel_pro_input" name="courrielPro" />
+                <label for="nbSaisons_input">Nombre de saisons:</label>
+                <input type="number" id="nbSaisons_input" name="nbSaisons" required />
               </p>
-
+              <p>
+                <label for="nbEpisodes_input">Nombre d'épisodes:</label>
+                <input type="number" id="nbEpisodes_input" name="nbEpisodes" required />
+              </p>
+              <p>
+                <label for="nbEpisodesVus_input">Nombre d'épisodes vus:</label>
+                <input type="number" id="nbEpisodesVus_input" name="nbEpisodesVus" required />
+              </p>                         
               <input type="submit" name="submit" value="Soumettre" />
             </form>
           </main>
