@@ -38,7 +38,7 @@
 
             $reponse = $bdd->query('SELECT id, nom, prenom FROM contacts ORDER BY nom, prenom');
 
-            while ($contact = $reponse->fetch()) {
+            foreach ($reponse as $contact) {
               ?>
                 <tr class="ligne-donnees" onClick="window.location.href='/cours10/exemple-v2/afficher.php?id=<?= $contact['id'] ?>'">
                   <td>
@@ -62,9 +62,6 @@
                 </tr>
               <?php
             }
-
-            $reponse->closeCursor();
-
           ?>
         </tbody>
       </table>

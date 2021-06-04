@@ -11,5 +11,5 @@
   $requete = $bdd->prepare('DELETE FROM contacts WHERE id = ?');
   $requete->execute([ $id ]);
 
-  header('Location: /cours10/exemple');
+  header('Location: /cours10/exemple-v2');
 ?>

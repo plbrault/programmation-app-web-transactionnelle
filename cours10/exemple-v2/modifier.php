@@ -21,19 +21,15 @@
   
   $contact = $requete->fetch();
 
-  $requete->closeCursor();
-
   // Récupérer les adresses
 
   $requete = $bdd->prepare("SELECT adresse, type_adresse FROM adresses WHERE contact_id = ?");
   $requete->execute([ $idContact ]);
   
   $adresses = [];
-  while ($donneesAdresse = $requete->fetch()) {
+  foreach ($requete as $donneesAdresse) {
     $adresses[$donneesAdresse['type_adresse']] = $donneesAdresse['adresse'];
   }
-
-  $requete->closeCursor();
 
   // Récupérer les numéros de téléphone
 
@@ -41,11 +37,9 @@
   $requete->execute([ $idContact ]);
   
   $numerosTel = [];
-  while ($donneesNumeroTel = $requete->fetch()) {
+  foreach ($requete as $donneesNumeroTel) {
     $numerosTel[$donneesNumeroTel['type_numero_tel']] = $donneesNumeroTel['numero_tel'];
   }
-
-  $requete->closeCursor();
 
   // Récupérer les adresses courriel
 
@@ -53,11 +47,9 @@
   $requete->execute([ $idContact ]);
   
   $courriels = [];
-  while ($donneesCourriel = $requete->fetch()) {
+  foreach ($requete as $donneesCourriel) {
     $courriels[$donneesCourriel['type_courriel']] = $donneesCourriel['courriel'];
   }
-
-  $requete->closeCursor();
 
   /*
     On place le code de traitement des données du formulaire avant tout code HTML,
@@ -106,7 +98,7 @@
 
     // Mise à jour des adresses
     $reponse = $bdd->query('SELECT code FROM types_adresse');
-    while ($donneesTypeAdresse = $reponse->fetch()) {
+    foreach ($reponse as $donneesTypeAdresse) {
       $typeAdresse = $donneesTypeAdresse['code'];
 
       // Si un champ de coordonnée a été vidé, supprimer la donnée.
@@ -125,11 +117,10 @@
         $requete->execute([ $adressesForm[$typeAdresse], $idContact ]);
       }
     }
-    $reponse->closeCursor();
     
     // Mises à jour des numéros de téléphone
     $reponse = $bdd->query('SELECT code FROM types_numero_tel');
-    while ($donneesTypeNumeroTel = $reponse->fetch()) {
+    foreach ($reponse as $donneesTypeNumeroTel) {
       $typeNumeroTel = $donneesTypeNumeroTel['code'];
 
       // Si un champ de coordonnée a été vidé, supprimer la donnée.
@@ -152,7 +143,7 @@
 
     // Mises à jour des adresses courriel
     $reponse = $bdd->query('SELECT code FROM types_courriel');
-    while ($donneesTypeCourriel = $reponse->fetch()) {
+    foreach ($reponse as $donneesTypeCourriel) {
       $typeCourriel = $donneesTypeCourriel['code'];
 
       // Si un champ de coordonnée a été vidé, supprimer la donnée.

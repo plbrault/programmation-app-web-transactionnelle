@@ -46,7 +46,6 @@
 
     $resultat = $requete->fetch();
     $idContact = $resultat['id'];
-    $requete->closeCursor();
 
     if (!empty($adresseDom)) {
       $requete = $bdd->prepare("INSERT INTO adresses(contact_id, type_adresse, adresse) VALUES($idContact, 'DOM', ?)");

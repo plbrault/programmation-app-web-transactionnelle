@@ -25,7 +25,6 @@
   $requete->execute(array($idContact));
   
   $contact = $requete->fetch();
-  $requete->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +64,7 @@
 
         if ($requete->rowCount() > 0) {
           echo '<ul>';
-          while ($donneesNumeroTel = $requete->fetch()) {
+          foreach ($requete as $donneesNumeroTel) {
             echo '<li><strong>'
               . $donneesNumeroTel['description']
               . ': </strong>'
@@ -76,8 +75,6 @@
         } else {
           echo '<p>Aucun</p>';
         }
-
-        $requete->closeCursor();
       ?>
 
       <h2>Adresses</h2>
@@ -87,7 +84,7 @@
 
         if ($requete->rowCount() > 0) {
           echo '<ul>';
-          while ($donneesNumeroTel = $requete->fetch()) {
+          foreach ($requete as $donneesNumeroTel) {
             echo '<li><strong>'
               . $donneesNumeroTel['description']
               . ': </strong>'
@@ -98,8 +95,6 @@
         } else {
           echo '<p>Aucun</p>';
         }
-
-        $requete->closeCursor();
       ?>
 
       <h2>Adresses courriel</h2>
@@ -109,7 +104,7 @@
 
         if ($requete->rowCount() > 0) {
           echo '<ul>';
-          while ($donneesNumeroTel = $requete->fetch()) {
+          foreach ($requete as $donneesNumeroTel) {
             echo '<li><strong>'
               . $donneesNumeroTel['description']
               . ': </strong>'
@@ -120,8 +115,6 @@
         } else {
           echo '<p>Aucune</p>';
         }
-
-        $requete->closeCursor();
       ?>
     </main>
   </body>
