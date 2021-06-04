@@ -15,14 +15,14 @@
     <title>
       Liste de contacts
     </title>
-    <link rel="stylesheet" href="/cours10/exemple/style.css"> 
+    <link rel="stylesheet" href="/cours10/exemple-v2/style.css"> 
   </head>
   <body>
     <h1>Liste de contacts</h1>
 
     <main>
       <p>
-        <a href="/cours10/exemple/ajouter.php">Ajouter un contact</a>
+        <a href="/cours10/exemple-v2/ajouter.php">Ajouter un contact</a>
       </p>
 
       <table>
@@ -38,23 +38,23 @@
 
             $reponse = $bdd->query('SELECT id, nom, prenom FROM contacts ORDER BY nom, prenom');
 
-            while ($contact = $reponse->fetch()) {
+            foreach ($reponse as $contact) {
               ?>
                 <tr class="ligne-donnees">
-                  <td onClick="window.location.href='/cours10/exemple/afficher.php?id=<?= $contact['id'] ?>'">
+                  <td onClick="window.location.href='/cours10/exemple-v2/afficher.php?id=<?= $contact['id'] ?>'">
                     <?= $contact['nom'] ?>
                   </td>
-                  <td onClick="window.location.href='/cours10/exemple/afficher.php?id=<?= $contact['id'] ?>'">
+                  <td onClick="window.location.href='/cours10/exemple-v2/afficher.php?id=<?= $contact['id'] ?>'">
                     <?= $contact['prenom'] ?>
                   </td>
                   <td class="col-actions">
-                    <a href="/cours10/exemple/modifier.php?id=<?= $contact['id'] ?>">
+                    <a href="/cours10/exemple-v2/modifier.php?id=<?= $contact['id'] ?>">
                       ✏️
                     </a>
                     &nbsp;
                     <a
                       onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['nom'] . ', ' . $contact['prenom'] ?> » ?')"
-                      href="/cours10/exemple/supprimer.php?id=<?= $contact['id'] ?>"
+                      href="/cours10/exemple-v2/supprimer.php?id=<?= $contact['id'] ?>"
                     >
                       ❌
                     </a>
@@ -62,9 +62,6 @@
                 </tr>
               <?php
             }
-
-            $reponse->closeCursor();
-
           ?>
         </tbody>
       </table>
