@@ -40,11 +40,11 @@
 
             while ($contact = $reponse->fetch()) {
               ?>
-                <tr class="ligne-donnees" onClick="window.location.href='/cours10/exemple/afficher.php?id=<?= $contact['id'] ?>'">
-                  <td>
+                <tr class="ligne-donnees">
+                  <td onClick="window.location.href='/cours10/exemple/afficher.php?id=<?= $contact['id'] ?>'">
                     <?= $contact['nom'] ?>
                   </td>
-                  <td>
+                  <td onClick="window.location.href='/cours10/exemple/afficher.php?id=<?= $contact['id'] ?>'">
                     <?= $contact['prenom'] ?>
                   </td>
                   <td class="col-actions">

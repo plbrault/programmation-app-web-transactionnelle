@@ -40,11 +40,11 @@
 
             foreach ($reponse as $contact) {
               ?>
-                <tr class="ligne-donnees" onClick="window.location.href='/cours10/exemple-v2/afficher.php?id=<?= $contact['id'] ?>'">
-                  <td>
+                <tr class="ligne-donnees">
+                  <td onClick="window.location.href='/cours10/exemple-v2/afficher.php?id=<?= $contact['id'] ?>'">
                     <?= $contact['nom'] ?>
                   </td>
-                  <td>
+                  <td onClick="window.location.href='/cours10/exemple-v2/afficher.php?id=<?= $contact['id'] ?>'">
                     <?= $contact['prenom'] ?>
                   </td>
                   <td class="col-actions">

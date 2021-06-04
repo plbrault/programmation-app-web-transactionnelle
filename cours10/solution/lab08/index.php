@@ -33,11 +33,11 @@
 
             while ($serie = $reponse->fetch()) {
               ?>
-                <tr class="ligne-donnees" onClick="window.location.href='/cours10/solution/lab08/afficher.php?id=<?= $serie['id'] ?>'">
-                  <td>
+                <tr class="ligne-donnees">
+                  <td onClick="window.location.href='/cours10/solution/lab08/afficher.php?id=<?= $serie['id'] ?>'">
                     <?= $serie['titre'] ?>
                   </td>
-                  <td>
+                  <td onClick="window.location.href='/cours10/solution/lab08/afficher.php?id=<?= $serie['id'] ?>'">
                     <?= $serie['nomdiffuseur'] ?>
                   </td>
                   <td class="col-actions">
