@@ -9,11 +9,6 @@ class AddController extends Controller {
   }
 
   function handlePost($get, $post) {
-    if (!isset($get['id'])) {
-      throw new Exception('Parameter `id` is missing.');
-    }
-    $id = intval($get['id']);
-
     if (
       !isset($_POST['nom'])
       || !isset($_POST['prenom'])
@@ -50,7 +45,9 @@ class AddController extends Controller {
 
     $model = new ContactModel($this->db);
 
-    $model->insert($firstName, $lastName, $phoneNumbers, $addresses, $emailAddresses);
+    $id = $model->insert($firstName, $lastName, $phoneNumbers, $addresses, $emailAddresses);
+
+    header("Location: ?action=display&id=$id");
   }
 }
 

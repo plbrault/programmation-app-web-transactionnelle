@@ -4,7 +4,7 @@
     <title>
       Nouveau contact
     </title>
-    <link rel="stylesheet" href="/cours11/exemples/MVC/style.css"> 
+    <link rel="stylesheet" href="/cours11/exemples/MVC/public/style.css"> 
   </head>
   <body>
   <p>

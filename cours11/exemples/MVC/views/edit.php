@@ -4,11 +4,11 @@
     <title>
       <?= 'Modifier « ' . $contact['last_name']  . ', ' . $contact['first_name'] . ' »' ?>
     </title>
-    <link rel="stylesheet" href="/cours10/exemple-v2/style.css"> 
+    <link rel="stylesheet" href="/cours11/exemples/MVC/public/style.css"> 
   </head>
   <body>
   <p>
-    <a href="/cours10/exemple-v2/">Contacts</a>
+    <a href="?action=list">Contacts</a>
       &nbsp;/&nbsp;
       <?= $contact['last_name'] . ', ' . $contact['first_name'] ?>
     </p>

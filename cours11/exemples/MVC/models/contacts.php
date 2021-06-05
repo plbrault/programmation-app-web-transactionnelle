@@ -77,6 +77,8 @@ class ContactModel {
       }
 
       $this->db->commit();
+
+      return $contactID;
     } catch (Exception $e) {
       $this->db->rollback();
       throw $e;
