@@ -91,7 +91,7 @@ class ContactModel {
 
       $currentData = $this->get($id);
 
-      if ($currentData['first_name'] !== $firstName || $currentData['lastName'] !== $lastName) {
+      if ($currentData['first_name'] !== $firstName || $currentData['last_name'] !== $lastName) {
         $query = $this->db->prepare('UPDATE contacts SET prenom = ?, nom = ? WHERE id = ?');
         $query->execute([ $firstName, $lastName, $id ]);
       }

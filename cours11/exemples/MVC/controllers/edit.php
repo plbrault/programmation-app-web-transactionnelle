@@ -75,6 +75,8 @@ class EditController extends Controller {
     $model = new ContactModel($this->db);
 
     $model->update($id, $firstName, $lastName, $phoneNumbers, $addresses, $emailAddresses);
+
+    header("Location: ?action=display&id=$id");
   }
 }
 

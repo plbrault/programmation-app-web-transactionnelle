@@ -20,11 +20,11 @@
       <form action="?action=edit&id=<?= $contact['id'] ?>" method="POST">
         <p>
           <label for="lastName_input">Nom:</label>
-          <input type="text" id="lastName_input" name="lastName" value="<?= $contact['last_name'] ?>" required />
+          <input type="text" id="lastName_input" name="nom" value="<?= $contact['last_name'] ?>" required />
         </p>
         <p>
           <label for="lastName_input">Prénom:</label>
-          <input type="text" id="firstName_input" name="firstName" value="<?= $contact['first_name'] ?>" required />
+          <input type="text" id="firstName_input" name="prenom" value="<?= $contact['first_name'] ?>" required />
         </p>
 
         <h2>Numéros de téléphone</h2>
