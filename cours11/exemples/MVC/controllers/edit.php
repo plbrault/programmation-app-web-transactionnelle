@@ -14,6 +14,21 @@ class EditController extends Controller {
 
     $contact = $model->get($id);
 
+    $phoneNumbers = [];
+    foreach ($contact['phoneNumbers'] as $phoneNumberData) {
+      $phoneNumbers[$phoneNumberData['phone_number_type_code']] = $phoneNumberData['phone_number'];
+    }
+
+    $addresses = [];
+    foreach ($contact['addresses'] as $addressData) {
+      $addresses[$addressData['address_type_code']] = $addressData['address'];
+    }
+
+    $emailAddresses = [];
+    foreach ($contact['emailAddresses'] as $emailAddressData) {
+      $emailAddresses[$emailAddressData['email_type_code']] = $emailAddressData['email'];
+    }    
+
     include(__DIR__ . '/../views/edit.php');
   }
 

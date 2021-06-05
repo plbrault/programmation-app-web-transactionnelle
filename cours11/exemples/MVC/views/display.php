@@ -68,9 +68,9 @@
           echo '<ul>';
           foreach ($contact['emailAddresses'] as $emailAddressData) {
             echo '<li><strong>'
-              . $emailAddressData['email']
-              . ': </strong>'
               . $emailAddressData['email_type']
+              . ': </strong>'
+              . $emailAddressData['email']
               . '</li>';
           }
           echo '</ul>';

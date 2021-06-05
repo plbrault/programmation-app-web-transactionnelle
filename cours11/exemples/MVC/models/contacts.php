@@ -18,7 +18,7 @@ class ContactModel {
     $contact = $contactQuery->fetch();
 
     $phoneQuery = $this->db->prepare('
-      SELECT numero_tel AS phone_number, types_numero_tel.description AS phone_number_type
+      SELECT numero_tel AS phone_number, types_numero_tel.description AS phone_number_type, type_numero_tel AS phone_number_type_code
         FROM numeros_tel
         JOIN types_numero_tel
           ON types_numero_tel.code = numeros_tel.type_numero_tel
@@ -27,7 +27,7 @@ class ContactModel {
     $phoneQuery->execute([$id]);
 
     $addressQuery = $this->db->prepare('
-      SELECT adresse AS address, types_adresse.description AS address_type
+      SELECT adresse AS address, types_adresse.description AS address_type, type_adresse AS address_type_code
         FROM adresses JOIN types_adresse
           ON types_adresse.code = adresses.type_adresse
         WHERE contact_id = ?'
@@ -35,7 +35,7 @@ class ContactModel {
     $addressQuery->execute(array($id));
 
     $emailQuery = $this->db->prepare('
-      SELECT courriel AS email, types_courriel.description AS email_type
+      SELECT courriel AS email, types_courriel.description AS email_type, type_courriel AS email_type_code
         FROM courriels
         JOIN types_courriel
           ON types_courriel.code = courriels.type_courriel
