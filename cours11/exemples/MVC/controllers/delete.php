@@ -13,6 +13,8 @@ class DeleteController extends Controller {
     $model = new ContactModel($this->db);
 
     $model->delete($id);
+
+    header("Location: ?action=list");
   }
 }
 
