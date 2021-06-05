@@ -4,6 +4,7 @@ include_once('db.php');
 
 include_once('controllers/list.php');
 include_once('controllers/display.php');
+include_once('controllers/edit.php');
 
 $action = 'list';
 if (isset($_GET['action'])) {
@@ -14,6 +15,9 @@ $controller;
 switch ($action) {
   case 'display':
     $controller = new DisplayController($db);
+    break;
+  case 'edit':
+    $controller = new EditController($db);
     break;
   case 'list':
   default:

@@ -15,13 +15,13 @@
     <h1><?= $contact['last_name'] . ', ' . $contact['first_name'] ?></h1>   
     
     <p>
-      <a href="?action=edit&id=<?= $idContact ?>">
+      <a href="?action=edit&id=<?= $contact['id'] ?>">
         ✏️
       </a>
       &nbsp;
       <a
         onclick="return confirm('Voulez-vous vraiment supprimer le contact « <?= $contact['last_name'] . ', ' . $contact['first_name'] ?> » ?')"
-        href="?action=delete&id=<?= $idContact ?>"
+        href="?action=delete&id=<?= $contact['id'] ?>"
       >
         ❌
       </a>
