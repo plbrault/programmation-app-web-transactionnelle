@@ -17,8 +17,8 @@
       <table>
         <thead>
           <tr>
-            <th>last_name</th>
-            <th>Prélast_name</th>
+            <th>Nom</th>
+            <th>Prénom</th>
             <th>Actions</th>
           </tr>
         </thead>
