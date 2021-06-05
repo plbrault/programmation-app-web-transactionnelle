@@ -117,7 +117,7 @@ class ContactModel {
         }
       }
 
-      $this->db->rollback();
+      $this->db->commit();
     } catch (Exception $e) {
       $this->db->rollback();
       throw $e;    }
