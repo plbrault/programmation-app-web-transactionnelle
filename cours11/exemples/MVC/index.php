@@ -16,6 +16,9 @@ switch ($action) {
   case 'display':
     $controller = new DisplayController($db);
     break;
+  case 'add':
+    $controller = new AddController($db);
+    break;
   case 'edit':
     $controller = new EditController($db);
     break;
