@@ -27,10 +27,10 @@
             foreach ($contacts as $contact) {
               ?>
                 <tr class="ligne-donnees">
-                  <td onClick="window.location.href='?action=view&id=<?= $contact['id'] ?>'">
+                  <td onClick="window.location.href='?action=display&id=<?= $contact['id'] ?>'">
                     <?= $contact['last_name'] ?>
                   </td>
-                  <td onClick="window.location.href='?action=view&id=<?= $contact['id'] ?>'">
+                  <td onClick="window.location.href='?action=display&id=<?= $contact['id'] ?>'">
                     <?= $contact['first_name'] ?>
                   </td>
                   <td class="col-actions">

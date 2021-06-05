@@ -13,8 +13,18 @@ abstract class Controller {
 
   /*
     Une méthode abstraite est une méthode que les classes filles doivent absolument définir.
+
+    Le paramètre $get contiendra les données reçues dans l'URL.
   */
-  abstract function invoke();
+  abstract function handle($get);
+
+  /*
+    Cette méthode sera appelée si des données ont été reçues en POST.
+
+    Le paramètre $get recevra les données reçues dans l'URL.
+    Le paramètre $post recevra les données reçues en POST (d'un formulaire).
+  */
+  function handlePost($get, $post) {}
 }
 
 ?>

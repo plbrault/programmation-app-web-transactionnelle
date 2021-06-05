@@ -37,18 +37,20 @@ class ContactModel {
     $emailQuery = $this->db->prepare('
       SELECT courriel AS email, types_courriel.description AS email_type
         FROM courriels
-        JOIN types_courrie
+        JOIN types_courriel
           ON types_courriel.code = courriels.type_courriel
         WHERE contact_id = ?
     ');
     $emailQuery->execute(array($id));
 
-    return array_merge(
+    $r = array_merge(
       $contact,
       ['phoneNumbers' => $phoneQuery->fetchAll()],
       ['addresses' => $addressQuery->fetchAll()],
       ['emailAddresses' => $emailQuery->fetchAll()],
     );
+
+    return $r;
   }
 
   function insert($firstName, $lastName, $phoneNumbers, $addresses, $emailAddresses) {
