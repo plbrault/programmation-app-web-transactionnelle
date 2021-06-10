@@ -62,6 +62,10 @@ if (count($routeParts) > 2) {
 // Récupère la méthode HTTP utilisée (GET, POST, etc)
 $method = $_SERVER['REQUEST_METHOD'];
 
+// Récupère le corps de la requête (s'il y a lieu)
+$jsonBody = file_get_contents('php://input');
+$body = json_decode($jsonBody, true);
+
 switch ($method) {
   case 'GET':
     if ($contactId) {
@@ -71,6 +75,26 @@ switch ($method) {
       $contacts = $model->getAll();
       sendResponse(200, $contacts);
     }
+    break;
+  case 'POST':
+    if ($contactId) {
+      sendResponse(404); // On ne veut pas d'ID avec POST (création)
+    }
+    // TODO: validation
+    $model->insert($body['first_name'], $body['last_name'], $body['phone_numbers'], $body['addresses'], $body['email_addresses']);
+    break;
+  case 'PUT':
+    if (!$contactId) { // On veut absolument un ID avec un PUT (mise à jour)
+      sendResponse(404);
+    }
+    // TODO: validation
+    $model->update($contactId, $body['first_name'], $body['last_name'], $body['phone_numbers'], $body['addresses'], $body['email_addresses']);
+    break;
+  case 'DELETE':
+    if (!$contactId) { // On veut absolument un ID avec un DELETE
+      sendResponse(404);
+    }
+    $model->delete($contactId);
     break;
   default:
     sendResponse(404);

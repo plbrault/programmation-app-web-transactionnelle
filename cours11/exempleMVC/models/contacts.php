@@ -8,7 +8,7 @@ class ContactModel {
   }
 
   function getAll() {
-    $query = $this->db->query('SELECT id, prenom AS first_name, nom AS last_name FROM contacts');
+    $query = $this->db->query('SELECT id, prenom AS first_name, nom AS last_name FROM contacts ORDER BY last_name, first_name');
     return $query->fetchAll();
   }
 

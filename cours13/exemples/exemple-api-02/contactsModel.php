@@ -8,7 +8,7 @@ class ContactModel {
   }
 
   function getAll() {
-    $query = $this->db->query('SELECT id, prenom AS first_name, nom AS last_name FROM contacts');
+    $query = $this->db->query('SELECT id, prenom AS first_name, nom AS last_name FROM contacts ORDER BY last_name, first_name');
     return $query->fetchAll();
   }
 
@@ -116,17 +116,17 @@ class ContactModel {
         $addressTypeCode = $addressTypeData['code'];
   
         // Si un champ de coordonnée a été vidé, supprimer la donnée.
-        if (empty($addresses[$addressTypeCode]) && !empty($currentAddresses[$addressTypeCode])) {
+        if (isset($addresses[$addressTypeCode]) && empty($addresses[$addressTypeCode]) && !empty($currentAddresses[$addressTypeCode])) {
           $query = $this->db->prepare("DELETE FROM adresses WHERE contact_id = ? AND type_adresse = '$addressTypeCode'");
           $query->execute([ $id ]);
         }
         // Si une coordonnée a été ajoutée, insérer la donnée.
-        else if (!empty($addresses[$addressTypeCode]) && empty($currentAddresses[$addressTypeCode])) {
+        else if (isset($addresses[$addressTypeCode]) && !empty($addresses[$addressTypeCode]) && empty($currentAddresses[$addressTypeCode])) {
           $query = $this->db->prepare("INSERT INTO adresses (contact_id, type_adresse, adresse) VALUES (?, '$addressTypeCode', ?)");
           $query->execute([ $id, $addresses[$addressTypeCode] ]);
         }
         // Si une coordonnée a été modifiée, mettre à jour la donnée.
-        else if ($addresses[$addressTypeCode] !== $currentAddresses[$addressTypeCode]) {
+        else if (isset($addresses[$addressTypeCode]) && $addresses[$addressTypeCode] !== $currentAddresses[$addressTypeCode]) {
           $query = $this->db->prepare("UPDATE adresses SET adresse = ? WHERE contact_id = ? AND type_adresse = '$addressTypeCode'");
           $query->execute([ $addresses[$addressTypeCode], $id ]);
         }
