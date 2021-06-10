@@ -8,7 +8,7 @@
   "addresses": {
     "PRO": "475 rue du Cégep"
   },
-  "emailAddresses": {
+  "email_addresses": {
     "PER": "joeblau@example.org",
     "PRO": "joeblau@example.com"
   }

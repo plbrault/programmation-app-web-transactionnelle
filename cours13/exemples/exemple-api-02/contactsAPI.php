@@ -25,6 +25,7 @@ $model = new ContactModel($db);
 function sendResponse($code, $body = null) {
   $statusCodes = array(
     200 => "200 OK",
+    400 => "400 Bad Request",
     401 => "401 Unauthorized",
     403 => "403 Forbidden",
     404 => "404 Not found",
@@ -84,14 +85,45 @@ switch ($method) {
     if ($contactId) {
       sendResponse(404); // On ne veut pas d'ID avec POST (création)
     }
-    // TODO: validation
+
+    if (
+      !isset($body['first_name'])
+      || !isset($body['last_name'])
+      || !isset($body['phone_numbers'])
+      || !is_array($body['phone_numbers'])
+      || !isset($body['addresses'])
+      || !is_array($body['addresses'])
+      || !isset($body['email_addresses'])
+      || !is_array($body['email_addresses'])
+    ) {
+      sendResponse(400);
+    }
+
     $model->insert($body['first_name'], $body['last_name'], $body['phone_numbers'], $body['addresses'], $body['email_addresses']);
     break;
   case 'PUT':
     if (!$contactId) { // On veut absolument un ID avec un PUT (mise à jour)
       sendResponse(404);
     }
-    // TODO: validation
+
+    if (
+      !isset($body['first_name'])
+      || !isset($body['last_name'])
+      || !isset($body['phone_numbers'])
+      || !is_array($body['phone_numbers'])
+      || !isset($body['addresses'])
+      || !is_array($body['addresses'])
+      || !isset($body['email_addresses'])
+      || !isset($body['email_addresses'])
+    ) {
+      sendResponse(400);
+    }
+
+    $contact = $model->get($contactId);
+    if (!$contact) {
+      sendResponse(404);
+    }
+
     $model->update($contactId, $body['first_name'], $body['last_name'], $body['phone_numbers'], $body['addresses'], $body['email_addresses']);
     break;
   case 'DELETE':

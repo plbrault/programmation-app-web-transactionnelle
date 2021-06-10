@@ -46,9 +46,9 @@ class ContactModel {
 
       $result = array_merge(
         $contact,
-        ['phoneNumbers' => $phoneQuery->fetchAll()],
+        ['phone_numbers' => $phoneQuery->fetchAll()],
         ['addresses' => $addressQuery->fetchAll()],
-        ['emailAddresses' => $emailQuery->fetchAll()],
+        ['email_addresses' => $emailQuery->fetchAll()],
       );
 
       return $result;
@@ -95,7 +95,7 @@ class ContactModel {
       $currentData = $this->get($id);
 
       $currentPhoneNumbers = [];
-      foreach ($currentData['phoneNumbers'] as $phoneNumberData) {
+      foreach ($currentData['phone_numbers'] as $phoneNumberData) {
         $currentPhoneNumbers[$phoneNumberData['phone_number_type_code']] = $phoneNumberData['phone_number'];
       }
   
@@ -105,7 +105,7 @@ class ContactModel {
       }
   
       $currentEmailAddresses = [];
-      foreach ($currentData['emailAddresses'] as $emailAddressData) {
+      foreach ($currentData['email_addresses'] as $emailAddressData) {
         $currentEmailAddresses[$emailAddressData['email_type_code']] = $emailAddressData['email'];
       }    
 
@@ -119,12 +119,12 @@ class ContactModel {
         $addressTypeCode = $addressTypeData['code'];
   
         // Si un champ de coordonnée a été vidé, supprimer la donnée.
-        if (isset($addresses[$addressTypeCode]) && empty($addresses[$addressTypeCode]) && !empty($currentAddresses[$addressTypeCode])) {
+        if (!isset($addresses[$addressTypeCode]) && !empty($currentAddresses[$addressTypeCode])) {
           $query = $this->db->prepare("DELETE FROM adresses WHERE contact_id = ? AND type_adresse = '$addressTypeCode'");
           $query->execute([ $id ]);
         }
         // Si une coordonnée a été ajoutée, insérer la donnée.
-        else if (isset($addresses[$addressTypeCode]) && !empty($addresses[$addressTypeCode]) && empty($currentAddresses[$addressTypeCode])) {
+        else if (isset($addresses[$addressTypeCode]) && empty($currentAddresses[$addressTypeCode])) {
           $query = $this->db->prepare("INSERT INTO adresses (contact_id, type_adresse, adresse) VALUES (?, '$addressTypeCode', ?)");
           $query->execute([ $id, $addresses[$addressTypeCode] ]);
         }
@@ -140,12 +140,12 @@ class ContactModel {
         $phoneNumberTypeCode = $phoneNumberTypeData['code'];
   
         // Si un champ de coordonnée a été vidé, supprimer la donnée.
-        if (isset($phoneNumbers[$phoneNumberTypeCode]) && empty($phoneNumbers[$phoneNumberTypeCode]) && !empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
+        if (!isset($phoneNumbers[$phoneNumberTypeCode]) && !empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
           $query = $this->db->prepare("DELETE FROM numeros_tel WHERE contact_id = ? AND type_numero_tel = '$phoneNumberTypeCode'");
           $query->execute([ $id ]);
         }
         // Si une coordonnée a été ajoutée, insérer la donnée.
-        else if (isset($phoneNumbers[$phoneNumberTypeCode]) && !empty($phoneNumbers[$phoneNumberTypeCode]) && empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
+        else if (isset($phoneNumbers[$phoneNumberTypeCode]) && empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
           $query = $this->db->prepare("INSERT INTO numeros_tel (contact_id, type_numero_tel, numero_tel) VALUES (?, '$phoneNumberTypeCode', ?)");
           $query->execute([ $id, $phoneNumbers[$phoneNumberTypeCode] ]);
         }
@@ -161,17 +161,17 @@ class ContactModel {
         $emailAddressTypeCode = $emailAddressTypeData['code'];
   
         // Si un champ de coordonnée a été vidé, supprimer la donnée.
-        if (empty($emailAddresses[$emailAddressTypeCode]) && !empty($currentEmailAddresses[$emailAddressTypeCode])) {
+        if (!isset($emailAddresses[$emailAddressTypeCode]) && !empty($currentEmailAddresses[$emailAddressTypeCode])) {
           $query = $this->db->prepare("DELETE FROM courriels WHERE contact_id = ? AND type_courriel = '$emailAddressTypeCode'");
           $query->execute([ $id ]);
         }
         // Si une coordonnée a été ajoutée, insérer la donnée.
-        else if (!empty($emailAddresses[$emailAddressTypeCode]) && empty($currentEmailAddresses[$emailAddressTypeCode])) {
+        else if (isset($emailAddresses[$emailAddressTypeCode]) && empty($currentEmailAddresses[$emailAddressTypeCode])) {
           $query = $this->db->prepare("INSERT INTO courriels (contact_id, type_courriel, courriel) VALUES (?, '$emailAddressTypeCode', ?)");
           $query->execute([ $id, $emailAddresses[$emailAddressTypeCode] ]);
         }
         // Si une coordonnée a été modifiée, mettre à jour la donnée.
-        else if ($emailAddresses[$emailAddressTypeCode] !== $currentEmailAddresses[$emailAddressTypeCode]) {
+        else if (isset($emailAddresses[$emailAddressTypeCode]) && $emailAddresses[$emailAddressTypeCode] !== $currentEmailAddresses[$emailAddressTypeCode]) {
           $query = $this->db->prepare("UPDATE courriels SET courriel = ? WHERE contact_id = ? AND type_courriel = '$emailAddressTypeCode'");
           $query->execute([ $emailAddresses[$emailAddressTypeCode], $id ]);
         }
