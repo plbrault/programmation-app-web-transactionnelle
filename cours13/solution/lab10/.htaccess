@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^series seriesAPI.php [L]
+RewriteRule ^series/(.+)$ seriesAPI.php [L]
