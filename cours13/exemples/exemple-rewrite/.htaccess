@@ -1,0 +1,10 @@
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+# Règles de réécriture d'URL :
+
+# Action sans id
+RewriteRule ^([a-zA-Z]+)$ index.php?action=$1 [L]
+
+# Action avec un id:
+RewriteRule ^([a-zA-Z]+)/([0-9]+)$ index.php?action=$1&id=$2 [L]
