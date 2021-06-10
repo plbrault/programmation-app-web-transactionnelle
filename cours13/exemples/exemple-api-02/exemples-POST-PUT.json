@@ -1,0 +1,15 @@
+{
+  "first_name": "Joe",
+  "last_name": "Blau",
+  "phone_numbers": {
+    "TRV": "819-555-1234",
+    "CEL": "819-555-5678"
+  },
+  "addresses": {
+    "TRV": "475 rue du Cégep"
+  },
+  "email_addresses": {
+    "PER": "joeblau@example.org",
+    "PRO": "joeblau@example.com"
+  }
+}

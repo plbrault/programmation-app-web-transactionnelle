@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^students studentsAPI.php [L]
+RewriteRule ^students/(.+)$ studentsAPI.php [L]

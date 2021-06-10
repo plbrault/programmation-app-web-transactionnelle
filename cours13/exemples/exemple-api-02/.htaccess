@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^contacts contactsAPI.php [L]
+RewriteRule ^contacts/(.+)$ contactsAPI.php [L]
