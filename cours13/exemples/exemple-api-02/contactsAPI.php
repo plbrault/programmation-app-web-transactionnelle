@@ -70,7 +70,11 @@ switch ($method) {
   case 'GET':
     if ($contactId) {
       $contact = $model->get($contactId);
-      sendResponse(200, $contact);
+      if ($contact) {
+        sendResponse(200, $contact);
+      } else { // Le contact n'existe pas
+        sendResponse(404);
+      }
     } else {
       $contacts = $model->getAll();
       sendResponse(200, $contacts);

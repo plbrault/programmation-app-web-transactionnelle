@@ -17,40 +17,43 @@ class ContactModel {
     $contactQuery->execute([ $id ]);
     $contact = $contactQuery->fetch();
 
-    $phoneQuery = $this->db->prepare('
-      SELECT numero_tel AS phone_number, types_numero_tel.description AS phone_number_type, type_numero_tel AS phone_number_type_code
-        FROM numeros_tel
-        JOIN types_numero_tel
-          ON types_numero_tel.code = numeros_tel.type_numero_tel
-        WHERE contact_id = ?
-    ');
-    $phoneQuery->execute([$id]);
+    if ($contact) {
+      $phoneQuery = $this->db->prepare('
+        SELECT numero_tel AS phone_number, types_numero_tel.description AS phone_number_type, type_numero_tel AS phone_number_type_code
+          FROM numeros_tel
+          JOIN types_numero_tel
+            ON types_numero_tel.code = numeros_tel.type_numero_tel
+          WHERE contact_id = ?
+      ');
+      $phoneQuery->execute([$id]);
 
-    $addressQuery = $this->db->prepare('
-      SELECT adresse AS address, types_adresse.description AS address_type, type_adresse AS address_type_code
-        FROM adresses JOIN types_adresse
-          ON types_adresse.code = adresses.type_adresse
-        WHERE contact_id = ?'
-    );
-    $addressQuery->execute(array($id));
+      $addressQuery = $this->db->prepare('
+        SELECT adresse AS address, types_adresse.description AS address_type, type_adresse AS address_type_code
+          FROM adresses JOIN types_adresse
+            ON types_adresse.code = adresses.type_adresse
+          WHERE contact_id = ?'
+      );
+      $addressQuery->execute(array($id));
 
-    $emailQuery = $this->db->prepare('
-      SELECT courriel AS email, types_courriel.description AS email_type, type_courriel AS email_type_code
-        FROM courriels
-        JOIN types_courriel
-          ON types_courriel.code = courriels.type_courriel
-        WHERE contact_id = ?
-    ');
-    $emailQuery->execute(array($id));
+      $emailQuery = $this->db->prepare('
+        SELECT courriel AS email, types_courriel.description AS email_type, type_courriel AS email_type_code
+          FROM courriels
+          JOIN types_courriel
+            ON types_courriel.code = courriels.type_courriel
+          WHERE contact_id = ?
+      ');
+      $emailQuery->execute(array($id));
 
-    $r = array_merge(
-      $contact,
-      ['phoneNumbers' => $phoneQuery->fetchAll()],
-      ['addresses' => $addressQuery->fetchAll()],
-      ['emailAddresses' => $emailQuery->fetchAll()],
-    );
+      $result = array_merge(
+        $contact,
+        ['phoneNumbers' => $phoneQuery->fetchAll()],
+        ['addresses' => $addressQuery->fetchAll()],
+        ['emailAddresses' => $emailQuery->fetchAll()],
+      );
 
-    return $r;
+      return $result;
+    }
+    return null;
   }
 
   function insert($firstName, $lastName, $phoneNumbers, $addresses, $emailAddresses) {
@@ -137,17 +140,17 @@ class ContactModel {
         $phoneNumberTypeCode = $phoneNumberTypeData['code'];
   
         // Si un champ de coordonnée a été vidé, supprimer la donnée.
-        if (empty($phoneNumbers[$phoneNumberTypeCode]) && !empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
+        if (isset($phoneNumbers[$phoneNumberTypeCode]) && empty($phoneNumbers[$phoneNumberTypeCode]) && !empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
           $query = $this->db->prepare("DELETE FROM numeros_tel WHERE contact_id = ? AND type_numero_tel = '$phoneNumberTypeCode'");
           $query->execute([ $id ]);
         }
         // Si une coordonnée a été ajoutée, insérer la donnée.
-        else if (!empty($phoneNumbers[$phoneNumberTypeCode]) && empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
+        else if (isset($phoneNumbers[$phoneNumberTypeCode]) && !empty($phoneNumbers[$phoneNumberTypeCode]) && empty($currentPhoneNumbers[$phoneNumberTypeCode])) {
           $query = $this->db->prepare("INSERT INTO numeros_tel (contact_id, type_numero_tel, numero_tel) VALUES (?, '$phoneNumberTypeCode', ?)");
           $query->execute([ $id, $phoneNumbers[$phoneNumberTypeCode] ]);
         }
         // Si une coordonnée a été modifiée, mettre à jour la donnée.
-        else if ($phoneNumbers[$phoneNumberTypeCode] !== $currentPhoneNumbers[$phoneNumberTypeCode]) {
+        else if (isset($phoneNumbers[$phoneNumberTypeCode]) && $phoneNumbers[$phoneNumberTypeCode] !== $currentPhoneNumbers[$phoneNumberTypeCode]) {
           $query = $this->db->prepare("UPDATE numeros_tel SET numero_tel = ? WHERE contact_id = ? AND type_numero_tel = '$phoneNumberTypeCode'");
           $query->execute([ $phoneNumbers[$phoneNumberTypeCode], $id ]);
         }
