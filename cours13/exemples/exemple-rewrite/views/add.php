@@ -4,7 +4,7 @@
     <title>
       Nouveau contact
     </title>
-    <link rel="stylesheet" href="/cours13/exemples/exemple-rewrite/public/style.css"> 
+    <link rel="stylesheet" href="public/style.css"> 
   </head>
   <body>
   <p>
