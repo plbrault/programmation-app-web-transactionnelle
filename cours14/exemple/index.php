@@ -68,6 +68,14 @@ if (!empty($_POST)) {
     'vinegar' => 'Vinaigre'
   ];
 
+  /*
+    Création des heures de réception et de livraison de la commande
+    Voir https://www.php.net/manual/fr/function.date.php
+    et https://www.php.net/manual/en/function.time.php
+  */
+  $orderReceivedAt = date("H:i");
+  $estimatedDeliveryTime =  date("H:i", time() + (30 * 60)); // time() retourne le nombre de secondes écoulées depuis le 1er janvier 1970
+
   // Appel de la vue de confirmation
   include('views/orderConfirmation.php');
 } else {

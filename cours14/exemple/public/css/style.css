@@ -7,3 +7,8 @@ fieldset {
 legend {
   font-weight: bold;
 }
+
+.order-item-details {
+  font-style: italic;
+  padding-left: 1em;
+}
