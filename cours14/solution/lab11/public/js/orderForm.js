@@ -1,8 +1,8 @@
 let nextItemKey = 0;
 
-function onDeleteButtonClick($event) {
+function onDeleteButtonClick(event) {
   // Retirer l'item
-  let legend = $event.target.parentNode;
+  let legend = event.target.parentNode;
   let fieldsetToRemove = legend.parentNode;
   fieldsetToRemove.remove();
 
