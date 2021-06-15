@@ -10,8 +10,10 @@
 if (!empty($_POST)) {
   foreach ($_POST['items'] as $item) {
     echo $item['type'] . '<br />';
-    foreach ($item['condiments'] as $condiment) {
-      echo $condiment . '<br />';
+    if (isset($item['condiments'])) {
+      foreach ($item['condiments'] as $condiment) {
+        echo $condiment . '<br />';
+      }
     }
     echo '<br />';
   }

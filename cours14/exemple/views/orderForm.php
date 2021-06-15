@@ -4,6 +4,7 @@
     <title>
       Formulaire de commande - Cantine Chez Rita
     </title>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
   </head>
   <body>
     <h1>Cantine Chez Rita</h1>
