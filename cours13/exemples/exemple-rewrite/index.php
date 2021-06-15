@@ -35,7 +35,7 @@ switch ($action) {
 if (!empty($_POST)) {
   $controller->handlePost($_GET, $_POST);
 } else {
-  $controller->handle($_GET, $_POST);
+  $controller->handle($_GET);
 }
 
 ?>

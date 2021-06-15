@@ -39,34 +39,34 @@ class EditController extends Controller {
     $id = intval($get['id']);
 
     if (
-      !isset($_POST['nom'])
-      || !isset($_POST['prenom'])
-      || !isset($_POST['adresseDom'])
-      || !isset($_POST['adresseTrv'])
-      || !isset($_POST['numeroTelDom'])
-      || !isset($_POST['numeroTelCel'])
-      || !isset($_POST['numeroTelTrv'])
-      || !isset($_POST['courrielPer'])
-      || !isset($_POST['courrielPro'])
+      !isset($post['nom'])
+      || !isset($post['prenom'])
+      || !isset($post['adresseDom'])
+      || !isset($post['adresseTrv'])
+      || !isset($post['numeroTelDom'])
+      || !isset($post['numeroTelCel'])
+      || !isset($post['numeroTelTrv'])
+      || !isset($post['courrielPer'])
+      || !isset($post['courrielPro'])
     ) {
       throw new Exception('Some POST fields are missing.');
     }
 
-    $lastName = trim($_POST['nom']);
-    $firstName = trim($_POST['prenom']);
+    $lastName = trim($post['nom']);
+    $firstName = trim($post['prenom']);
 
     $addresses = [];
-    $addresses['DOM'] = trim($_POST['adresseDom']);
-    $addresses['TRV'] = trim($_POST['adresseTrv']);
+    $addresses['DOM'] = trim($post['adresseDom']);
+    $addresses['TRV'] = trim($post['adresseTrv']);
 
     $phoneNumbers = [];
-    $phoneNumbers['DOM'] = trim($_POST['numeroTelDom']);
-    $phoneNumbers['CEL'] = trim($_POST['numeroTelCel']);
-    $phoneNumbers['TRV'] = trim($_POST['numeroTelTrv']);
+    $phoneNumbers['DOM'] = trim($post['numeroTelDom']);
+    $phoneNumbers['CEL'] = trim($post['numeroTelCel']);
+    $phoneNumbers['TRV'] = trim($post['numeroTelTrv']);
 
     $emailAddresses = [];
-    $emailAddresses['PER'] = trim($_POST['courrielPer']);
-    $emailAddresses['PRO']= trim($_POST['courrielPro']);
+    $emailAddresses['PER'] = trim($post['courrielPer']);
+    $emailAddresses['PRO']= trim($post['courrielPro']);
 
     if (empty($lastName) || empty($firstName)) {
       exit;

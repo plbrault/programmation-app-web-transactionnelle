@@ -39,7 +39,7 @@ function sendResponse($code, $body = null) {
 // Récupère la route utilisée et la sépare selon les '/'
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Récupère l'URL incluant BASE_URL
 $route = str_replace(BASE_URL, '', $url); // Récupère la route en retirant BASE_URL de l'URL
-$routeParts = explode( '/', $route ); // Retourne un tableau contenant les parties de la route (ex: /students/42 -> ['students', '42'])
+$routeParts = explode( '/', $route ); // Retourne un tableau contenant les parties de la route (ex: students/42 -> ['students', '42'])
 
 // Récupère le paramètre facultatif "id" s'il est présent
 $studentId = null;
