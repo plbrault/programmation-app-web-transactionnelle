@@ -14,8 +14,8 @@
         <label for="add-item-select">Ajouter...</label>
         <select id="add-item-select">
           <option value="" selected>Sélectionner un item</option>
-          <option value="hotdog">Hot-dog</option>
           <option value="hamburger">Hamburger</option>
+          <option value="hotdog">Hot-dog</option>
           <option value="frites">Frites</option>
         </select>
       </p>
