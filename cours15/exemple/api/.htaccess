@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^tasks tasksAPI.php [L]
+RewriteRule ^tasks/(.+)$ tasksAPI.php [L]
