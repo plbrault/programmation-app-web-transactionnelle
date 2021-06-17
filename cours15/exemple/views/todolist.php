@@ -5,16 +5,22 @@
   </head>
   <body>
     <h1>Liste de tâches</h1>
-    <ul>
-      <?php
+    <form>
+      <ul>
+        <?php
 
-      foreach ($tasks as $task) {
-        echo '<li id="task_' . $task['id'] . '">';
-        echo $task['description'];
-        echo '</li>';
-      }
+        foreach ($tasks as $task) {
+          $listItemID = 'task_' . $task['id'];
+          $checkboxID = $listItemID . '_checkbox';
 
-      ?>
-    </ul>
+          echo '<li id="' . $listItemID . '">';
+          echo '<input id="' . $checkboxID . '" type="checkbox" ' . ($task['is_checked'] ? 'checked ' : '') . '/>';
+          echo "<label for=\"$checkboxID\">" . $task['description'] . '</label>';
+          echo '</li>';
+        }
+
+        ?>
+      </ul>
+    </form>
   </body>
 </html>

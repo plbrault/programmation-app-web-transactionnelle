@@ -8,7 +8,7 @@ class TasksModel {
   }
 
   function getAll() {
-    $query = $this->db->query('SELECT id, description FROM tasks');
+    $query = $this->db->query('SELECT id, description, is_checked FROM tasks');
     return $query->fetchAll();
   }
 
