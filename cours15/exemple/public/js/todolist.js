@@ -71,10 +71,20 @@ window.onload = () => {
 
   let addTaskInput = document.getElementById('add_task_input');
   let addTaskButton = document.getElementById('add_task_button');
-  addTaskInput.oninput = addTaskInput.onmouseup = () => {
+
+  addTaskInput.oninput = addTaskInput.oninput = () => {
     addTaskButton.disabled = (addTaskInput.value.trim() === '');
   };
+
+  addTaskInput.onkeydown = (event) => {
+    if (event.key === 'Enter') {
+      addTaskButton.onclick();
+    }
+  }
+
   addTaskButton.onclick = () => {
     addTask(addTaskInput.value);
+    addTaskInput.value = '';
+    addTaskButton.disabled = true;
   };
 };
