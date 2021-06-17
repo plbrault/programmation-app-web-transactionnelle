@@ -87,7 +87,7 @@ switch ($method) {
       sendResponse(500, '', $e);
     }
   case 'PUT':
-    if (!$taskId) { // On veut absolument un ID avec un PUT (mise à jour)
+    if (!$taskId) {
       sendResponse(404);
     }
 
@@ -111,6 +111,22 @@ switch ($method) {
       sendResponse(500, '', $e);
     }
     break;
+  case 'DELETE':
+    if (!$taskId) {
+      sendResponse(404);
+    }
+
+    $task = $model->get($taskId);
+    if (!$task) {
+      sendResponse(404);
+    }
+
+    try {
+      $model->delete($taskId);
+      sendResponse(200);
+    } catch (Exception $e) {
+      sendResponse(500, '', $e);
+    } 
   default:
     sendResponse(404);
 }

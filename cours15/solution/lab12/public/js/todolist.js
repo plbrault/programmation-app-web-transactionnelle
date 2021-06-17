@@ -1,16 +1,5 @@
 const API_URL = 'api/tasks';
 
-function onCheckboxChange(event) {
-  let dataTag = event.target.parentNode;
-  let labelTag = dataTag.getElementsByTagName('label')[0];
-  
-  let taskId = dataTag.value;
-  let taskDescription = labelTag.innerHTML;
-
-  let isChecked = event.target.checked;
-  updateTask(taskId, taskDescription, isChecked);
-} 
-
 async function addTask(description) {
   let response = await fetch(`${API_URL}`, {
     method: 'post',
@@ -24,19 +13,25 @@ async function addTask(description) {
     let responseData = await response.json();
     let newTaskId = responseData.id;
 
-    let newTaskElement = document.createElement('li');
-
     let listItemId = `task_${newTaskId}`;
     let checkboxId = `${listItemId}_${newTaskId}_checkbox`;
 
-    newTaskElement.innerHTML = `
-      <li id="${listItemId}">
-        <data value="${newTaskId}">
-          <input id="${checkboxId}" type="checkbox" /><label for="${checkboxId}">${description}</label>
-        </data>
-      </li>
-    `;
+    let newTaskElement = document.createElement('li');
+    newTaskElement.id = listItemId;
+
+    newTaskElement.innerHTML = 
+      `<data value="${newTaskId}">` +
+        `<input id="${checkboxId}" type="checkbox" />` +
+        `<label for="${checkboxId}">${description}</label>` +
+      `</data>`
+    ;
     newTaskElement.onchange = onCheckboxChange;
+
+    let deleteButton = document.createElement('a');
+    deleteButton.classList.add('delete_button');
+    deleteButton.innerHTML = '❎';
+    deleteButton.onclick = onDeleteButtonClick;
+    newTaskElement.children[0].append(deleteButton);
 
     let taskList = document.getElementById('task_list');
     taskList.append(newTaskElement);
@@ -58,6 +53,36 @@ async function updateTask(id, description, isChecked) {
   } else {
     alert('Une erreur est survenue.');
   }
+}
+
+async function deleteTask(id) {
+  let response = await fetch(`${API_URL}/${id}`, {
+    method: 'delete',
+  });
+  if (response.ok) {
+    console.log(`Task deleted successfully: ${id}`);
+
+    let taskElement = document.getElementById(`task_${id}`);
+    taskElement.remove();
+  } else {
+    alert('Une erreur est survenue.');
+  }
+}
+
+function onCheckboxChange(event) {
+  let dataTag = event.target.parentNode;
+  let labelTag = dataTag.getElementsByTagName('label')[0];
+  
+  let taskId = dataTag.value;
+  let taskDescription = labelTag.innerHTML;
+
+  let isChecked = event.target.checked;
+  updateTask(taskId, taskDescription, isChecked);
+}
+
+function onDeleteButtonClick(event) {
+  let dataTag = event.target.parentNode;
+  deleteTask(dataTag.value);
 }
 
 window.onload = () => {
@@ -87,4 +112,11 @@ window.onload = () => {
     addTaskInput.value = '';
     addTaskButton.disabled = true;
   };
+
+  let deleteButtons = document.getElementsByClassName('delete_button');
+  for (let i = 0; i < deleteButtons.length; i++) {
+    let deleteButton = deleteButtons[i];
+
+    deleteButton.onclick = onDeleteButtonClick;
+  }
 };

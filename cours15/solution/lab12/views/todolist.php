@@ -17,6 +17,7 @@
           echo '<data value="' . $task['id'] . '">';
           echo '<input id="' . $checkboxID . '" type="checkbox" ' . ($task['is_checked'] ? 'checked ' : '') . '/>';
           echo "<label for=\"$checkboxID\">" . $task['description'] . '</label>';
+          echo "<a class=\"delete_button\">❎</a>";
           echo '</data>';
           echo '</li>';
         }

@@ -24,18 +24,18 @@ async function addTask(description) {
     let responseData = await response.json();
     let newTaskId = responseData.id;
 
-    let newTaskElement = document.createElement('li');
-
     let listItemId = `task_${newTaskId}`;
     let checkboxId = `${listItemId}_${newTaskId}_checkbox`;
 
-    newTaskElement.innerHTML = `
-      <li id="${listItemId}">
-        <data value="${newTaskId}">
-          <input id="${checkboxId}" type="checkbox" /><label for="${checkboxId}">${description}</label>
-        </data>
-      </li>
-    `;
+    let newTaskElement = document.createElement('li');
+    newTaskElement.id = listItemId;
+
+    newTaskElement.innerHTML = 
+      `<data value="${newTaskId}">` +
+        `<input id="${checkboxId}" type="checkbox" />` +
+        `<label for="${checkboxId}">${description}</label>` +
+      `</data>`
+    ;
     newTaskElement.onchange = onCheckboxChange;
 
     let taskList = document.getElementById('task_list');

@@ -28,6 +28,11 @@ class TasksModel {
     $query = $this->db->prepare('UPDATE tasks SET description = ?, is_checked = ? WHERE id = ?');
     $query->execute([ $description, intval($isChecked), $id ]);
   }
+
+  function delete($id) {
+    $query = $this->db->prepare('DELETE FROM tasks WHERE id = ?');
+    $query->execute([ $id ]);
+  }
 }
 
 ?>
