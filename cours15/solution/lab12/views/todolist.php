@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Liste de tâches</title>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
   </head>
   <body>
     <h1>Liste de tâches</h1>

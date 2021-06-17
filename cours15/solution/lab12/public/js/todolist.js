@@ -87,7 +87,7 @@ function onDeleteButtonClick(event) {
 
 window.onload = () => {
   let checkboxes = document.getElementById('task_list').getElementsByTagName('input');
-  console.log(checkboxes);
+  
   for(let i = 0; i < checkboxes.length; i++) { // Je n'utilise pas forEach car le résultat est un objet et non un tableau
     let checkbox = checkboxes[i];
 
