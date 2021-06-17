@@ -26,7 +26,7 @@ class TasksModel {
 
   function update($id, $description, $isChecked) {
     $query = $this->db->prepare('UPDATE tasks SET description = ?, is_checked = ? WHERE id = ?');
-    $query->execute([ $description, $isChecked, $id ]);
+    $query->execute([ $description, $isChecked, intval($id) ]);
   }
 }
 

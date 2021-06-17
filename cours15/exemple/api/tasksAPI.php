@@ -11,7 +11,7 @@ include_once('../models/tasks.php');
 
 $model = new TasksModel($db);
 
-function sendResponse($code, $body = null) {
+function sendResponse($code, $body = null, $exception = null) {
   $statusCodes = array(
     200 => "200 OK",
     400 => "400 Bad Request",
@@ -29,6 +29,9 @@ function sendResponse($code, $body = null) {
     echo $jsonBody;
   }
 
+  if ($exception) {
+    throw $exception;
+  }
   exit;
 }
 
@@ -87,7 +90,11 @@ switch ($method) {
       sendResponse(404);
     }
 
-    $model->update($taskId, $body['description'], $body['is_checked']);
+    try {
+      $model->update($taskId, $body['description'], $body['is_checked']);
+    } catch (Exception $e) {
+      sendResponse(500, '', $e);
+    }
     break;
   default:
     sendResponse(404);

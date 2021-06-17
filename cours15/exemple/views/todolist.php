@@ -24,5 +24,6 @@
         ?>
       </ul>
     </form>
+    <script src="public/js/todolist.js"></script>
   </body>
 </html>
