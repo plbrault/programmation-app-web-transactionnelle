@@ -20,8 +20,8 @@ class TasksModel {
 
   function insert($description) {
     $query = $this->db->prepare('INSERT INTO tasks (description) VALUES (?) RETURNING id');
-    $result = $query->execute([ $description ]);
-    return $result->fetchColumn();
+    $query->execute([ $description ]);
+    return $query->fetchColumn();
   }
 
   function update($id, $description, $isChecked) {

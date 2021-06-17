@@ -71,6 +71,21 @@ switch ($method) {
       $tasks = $model->getAll();
       sendResponse(200, $tasks);
     }
+  case 'POST':
+    if ($taskId) {
+      sendResponse(404);
+    }
+
+    if (!isset($body['description']) || !is_string($body['description'])) {
+      sendResponse(400);
+    }
+
+    try {
+      $newTaskId = $model->insert($body['description']);
+      sendResponse(200, [ "id" => $newTaskId ]);
+    } catch (Exception $e) {
+      sendResponse(500, '', $e);
+    }
   case 'PUT':
     if (!$taskId) { // On veut absolument un ID avec un PUT (mise à jour)
       sendResponse(404);

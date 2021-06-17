@@ -6,7 +6,7 @@
   <body>
     <h1>Liste de tâches</h1>
     <form>
-      <ul>
+      <ul id="task_list">
         <?php
 
         foreach ($tasks as $task) {
@@ -24,6 +24,9 @@
         ?>
       </ul>
     </form>
+    <input type="text" id="add_task_input" placeholder="Ajouter une tâche" />
+    <input type="button" id="add_task_button" value="➕" disabled />
+
     <script src="public/js/todolist.js"></script>
   </body>
 </html>
