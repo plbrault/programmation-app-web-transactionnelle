@@ -17,6 +17,7 @@ input[type="checkbox"]:checked + label {
   border: none;
 }
 
-#delete_button {
-  margin-left: 20px;
+.delete_button {
+  margin-left: 5px;
+  cursor: pointer;
 }
