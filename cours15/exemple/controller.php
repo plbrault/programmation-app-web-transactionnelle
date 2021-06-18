@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Une classe abstraite est une classe qui ne peut pas être instancée directement.
+  Une classe abstraite est une classe qui ne peut pas être instanciée directement.
   On peut seulement créer des classes héritant de celle-ci.
 */
 abstract class Controller {
