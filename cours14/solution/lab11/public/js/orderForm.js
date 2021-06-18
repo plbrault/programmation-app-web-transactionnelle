@@ -39,7 +39,7 @@ function createHamburgerElement() {
     <label for="item-${nextItemKey}-relish">Relish</label>    
   `;
   nextItemKey++;
-  element.onclick = onDeleteButtonClick;
+  element.getElementsByClassName('delete-button')[0].onclick = onDeleteButtonClick;
   return element;
 }
 
@@ -62,7 +62,7 @@ function createHotDogElement() {
     <label for="item-${nextItemKey}-relish">Relish</label>    
   `;
   nextItemKey++;
-  element.onclick = onDeleteButtonClick;
+  element.getElementsByClassName('delete-button')[0].onclick = onDeleteButtonClick;
   return element;
 }
 
@@ -93,7 +93,7 @@ function createFriesElement() {
     <label for="item-${nextItemKey}-vinegar">Vinaigre</label>
   `;
   nextItemKey++;
-  element.onclick = onDeleteButtonClick;
+  element.getElementsByClassName('delete-button')[0].onclick = onDeleteButtonClick;
   return element;
 }
 
