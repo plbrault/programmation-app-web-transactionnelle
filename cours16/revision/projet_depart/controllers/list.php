@@ -16,9 +16,12 @@ class ListController extends Controller {
       $wrongPassword = true;
 
       include(__DIR__ . '/../views/list_password_form.php');
-    } else {
-      $model = new AppointmentsModel($this->db);
-      $appointments = $model->getAll();
+    }
+    // Si le mot de passe fourni est valide, afficher la liste des rendez-vous
+    else {
+      /* AJOUTER DU CODE ICI */
+
+      /* FIN DU CODE AJOUTÉ */
 
       include(__DIR__ . '/../views/list.php');
     }

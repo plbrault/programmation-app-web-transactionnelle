@@ -23,19 +23,9 @@ class AppointmentsModel {
   }
 
   function get($confirmationNumber) {
-    $query = $this->db->prepare('
-      SELECT no_confirmation AS confirmation_number,
-            date,
-            heure AS time,
-            nom AS last_name,
-            prenom AS first_name,
-            no_tel AS phone_number,
-            courriel AS email
-        FROM rendezvous
-        WHERE no_confirmation = ?
-    ');
-    $query->execute([$confirmationNumber]);
-    return $query->fetch();
+    /* AJOUTER DU CODE CI-DESSOUS */
+
+    /* FIN DU CODE AJOUTÉ */
   }
 
   function insert($confirmationNumber, $date, $time, $lastName, $firstName, $phoneNumber, $email) {

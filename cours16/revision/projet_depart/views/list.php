@@ -21,19 +21,9 @@
       </thead>
       <tbody id="task_table_body">
         <?php
-          foreach ($appointments as $appointment) {
-            ?>
-              <tr>
-                <td><?= $appointment['date'] ?></td>
-                <td><?= $appointment['time'] ?></td>
-                <td><?= $appointment['last_name'] ?></td>
-                <td><?= $appointment['first_name'] ?></td>
-                <td><?= $appointment['phone_number'] ?></td>
-                <td><?= $appointment['email'] ?></td>
-                <td><?= $appointment['confirmation_number'] ?></td>
-              </tr>
-            <?php
-          }
+          /* AJOUTER DU CODE CI-DESSOUS */
+
+          /* FIN DU CODE AJOUTÉ */
         ?>
       </tbody>
     </table>
