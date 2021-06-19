@@ -1,3 +1,4 @@
+// Cette fonction est appelée toutes les 30 secondes
 async function updateList() {
   /* AJOUTER DU CODE CI-DESSOUS */
 
