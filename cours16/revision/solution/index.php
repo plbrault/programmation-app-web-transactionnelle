@@ -2,6 +2,7 @@
 
 include_once('db.php');
 
+include_once('controllers/add.php');
 include_once('controllers/home.php');
 include_once('controllers/list.php');
 
@@ -12,6 +13,9 @@ if (isset($_GET['action'])) {
 
 $controller;
 switch ($action) {
+  case 'add':
+    $controller = new AddController($db);
+    break;
   case 'list':
     $controller = new ListController($db);
     break;
