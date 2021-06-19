@@ -39,8 +39,9 @@ class AppointmentsModel {
   }
 
   function insert($confirmationNumber, $date, $time, $lastName, $firstName, $phoneNumber, $email) {
-    $query = $this->db->prepare('INSERT INTO rendezvous(no_confirmation, date, heure, nom, prenom, no_tel, courriel) VALUES(?, ?, ?, ?, ?, ?, ?)');
-    $query->execute([ $confirmationNumber, $date, $time, $lastName, $firstName, $phoneNumber, $email ]);
+    /* AJOUTER DU CODE CI-DESSOUS */
+
+    /* FIN DU CODE AJOUTÉ */
   }
 
   function update($confirmationNumber, $date, $time, $lastName, $firstName, $phoneNumber, $email) {

@@ -28,22 +28,9 @@
           ?>
         </select>
       </p>
-      <p>
-        <label for="last_name_input">Nom:</label>
-        <input type="text" id="last_name_input" name="last_name" required />
-      </p>
-      <p>
-        <label for="first_name_input">Prénom:</label>
-        <input type="text" id="last_name_input" name="first_name" required />
-      </p>
-      <p>
-        <label for="phone_number_input">Numéro de téléphone:</label>
-        <input type="text" id="phone_number_input" name="phone_number" required /> 
-      </p>
-      <p>
-        <label for="phone_number_input">Adresse courriel:</label>
-        <input type="text" id="email_input" name="email" required /> 
-      </p>
+      <!-- AJOUTER DU CODE CI-DESSOUS -->
+      
+      <!-- FIN DU CODE AJOUTÉ -->
       <p>
         <input type="submit" name="submit" value="Soumettre" />
       </p>      

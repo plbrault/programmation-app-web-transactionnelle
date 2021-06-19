@@ -23,22 +23,12 @@ class AddController extends Controller {
   }
 
   function handlePost($get, $post) {
-    if (
-      !isset($post['date'])
-      || !isset($post['time'])
-      || !isset($post['last_name'])
-      || !isset($post['first_name'])
-      || !isset($post['phone_number'])
-      || !isset($post['email'])
-    ) {
-      exit('Invalid data received.');
-    }
-
     $confirmationNumber = generateConfirmationNumber();
 
-    $model = new AppointmentsModel($this->db);
-    $model->insert($confirmationNumber, $post['date'], $post['time'], $post['last_name'], $post['first_name'], $post['phone_number'], $post['email']);
+    /* AJOUTER DU CODE CI-DESSOUS */
 
+    /* FIN DU CODE AJOUTÉ */
+    
     include(__DIR__ . '/../views/confirmation.php');
   }
 }
