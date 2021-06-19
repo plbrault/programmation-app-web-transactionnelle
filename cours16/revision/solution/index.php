@@ -3,6 +3,7 @@
 include_once('db.php');
 
 include_once('controllers/add.php');
+include_once('controllers/edit.php');
 include_once('controllers/home.php');
 include_once('controllers/list.php');
 
@@ -15,6 +16,9 @@ $controller;
 switch ($action) {
   case 'add':
     $controller = new AddController($db);
+    break;
+  case 'edit':
+    $controller = new EditController($db);
     break;
   case 'list':
     $controller = new ListController($db);
