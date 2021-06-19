@@ -45,7 +45,10 @@
       </p>
       <p>
         <input type="submit" name="submit" value="Soumettre" />
-      </p>      
+      </p>
     </form>
+    <p>
+      <a href="?action=delete&confirmation_number=<?= $confirmationNumber ?>">Annuler le rendez-vous</a>
+    </p>
   </body>
 </html>

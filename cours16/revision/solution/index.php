@@ -6,6 +6,7 @@ include_once('controllers/add.php');
 include_once('controllers/edit.php');
 include_once('controllers/home.php');
 include_once('controllers/list.php');
+include_once('controllers/delete.php');
 
 $action = 'home';
 if (isset($_GET['action'])) {
@@ -22,6 +23,9 @@ switch ($action) {
     break;
   case 'list':
     $controller = new ListController($db);
+    break;
+  case 'delete':
+    $controller = new DeleteController($db);
     break;
   case 'home':
   default:

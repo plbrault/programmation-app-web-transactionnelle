@@ -47,6 +47,11 @@ class AppointmentsModel {
     $query = $this->db->prepare('UPDATE rendezvous SET date = ?, heure = ?, nom = ?, prenom = ?, no_tel = ?, courriel = ? WHERE no_confirmation = ?');
     $query->execute([ $date, $time, $lastName, $firstName, $phoneNumber, $email, $confirmationNumber ]);
   }
+
+  function delete($confirmationNumber) {
+    $query = $this->db->prepare('DELETE FROM rendezvous WHERE no_confirmation = ?');
+    $query->execute([ $confirmationNumber ]);
+  }
 }
 
 ?>

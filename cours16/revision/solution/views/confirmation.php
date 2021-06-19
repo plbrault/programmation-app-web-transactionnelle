@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Confirmation de rendez-vous</title>
+    <title>Rendez-vous modifié</title>
   </head>
   <body>
     <h1>Rendez-vous créé</h1>
