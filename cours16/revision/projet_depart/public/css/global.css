@@ -1,0 +1,56 @@
+body {
+  font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  padding-top: 20px;
+}
+
+header {
+  background-color: blue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2px;
+}
+
+h1, h2, h3, h4, h5, h6, header a {
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+}
+
+a {
+  color:blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header a {
+  color: white;
+  
+}
+
+li {
+  margin-bottom: 1em;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+thead  {
+  background-color: black;
+  color: white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: ivory;
+}
+
+tbody tr:nth-child(even) {
+  background-color: lightgray;
+}

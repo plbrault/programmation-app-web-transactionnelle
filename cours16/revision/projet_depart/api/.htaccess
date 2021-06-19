@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^appointments appointmentsAPI.php [L]
+RewriteRule ^appointments/(.+)$ appointmentsAPI.php [L]
