@@ -42,6 +42,11 @@ class AppointmentsModel {
     $query = $this->db->prepare('INSERT INTO rendezvous(no_confirmation, date, heure, nom, prenom, no_tel, courriel) VALUES(?, ?, ?, ?, ?, ?, ?)');
     $query->execute([ $confirmationNumber, $date, $time, $lastName, $firstName, $phoneNumber, $email ]);
   }
+
+  function update($confirmationNumber, $date, $time, $lastName, $firstName, $phoneNumber, $email) {
+    $query = $this->db->prepare('UPDATE rendezvous SET date = ?, heure = ?, nom = ?, prenom = ?, no_tel = ?, courriel = ? WHERE no_confirmation = ?');
+    $query->execute([ $date, $time, $lastName, $firstName, $phoneNumber, $email, $confirmationNumber ]);
+  }
 }
 
 ?>
