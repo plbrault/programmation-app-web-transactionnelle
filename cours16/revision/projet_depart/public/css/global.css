@@ -54,3 +54,10 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
   background-color: lightgray;
 }
+
+.error_message {
+  color: magenta;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2em;
+}
