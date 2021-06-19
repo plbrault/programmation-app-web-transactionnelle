@@ -1,5 +1,7 @@
 <?php
 
+/* MODIFIER CE FICHIER SELON VOS BESOINS */
+
 $dbHost = 'localhost';
 $dbPort = 5432;
 $dbName = 'Rendezvous';
