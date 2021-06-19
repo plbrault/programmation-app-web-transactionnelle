@@ -5,6 +5,11 @@
   </head>
   <body>
     <h1>Modifier un rendez-vous</h1>
+    <?php
+      if ($invalidConfirmationNumber) {
+        echo '<p class="error_message">Le numéro de confirmation que vous avez entré est invalide.</p>';
+      }
+    ?>
     <p>
       Entrer le numéro de confirmation de votre rendez-vous:
     </p>
