@@ -4,6 +4,7 @@
     <title>Liste des rendez-vous</title>
   </head>
   <body>
+    <?php include(__DIR__ . '/header.php') ?>
     <h1>Liste des rendez-vous</h1>
     <table>
       <thead>

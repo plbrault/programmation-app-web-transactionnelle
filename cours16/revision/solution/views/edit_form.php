@@ -4,6 +4,7 @@
     <title>Modifier un rendez-vous</title>
   </head>
   <body>
+    <?php include(__DIR__ . '/header.php') ?>
     <h1>Modifier un rendez-vous</h1>
     <form method="POST" action="?action=edit">
       <input type="hidden" name="confirmation_number" value="<?= $confirmationNumber ?>" />

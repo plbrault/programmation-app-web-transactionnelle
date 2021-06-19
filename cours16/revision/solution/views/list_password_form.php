@@ -4,6 +4,7 @@
     <title>Accès restreint</title>
   </head>
   <body>
+    <?php include(__DIR__ . '/header.php') ?>
     <h1>Accès restreint</h1>
     <?php
       if ($wrongPassword) {

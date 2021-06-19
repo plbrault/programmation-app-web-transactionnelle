@@ -4,6 +4,7 @@
     <title>Prendre un rendez-vous</title>
   </head>
   <body>
+    <?php include(__DIR__ . '/header.php') ?>
     <h1>Prendre un rendez-vous</h1>
     <form method="POST" action="?action=add">
       <p>
