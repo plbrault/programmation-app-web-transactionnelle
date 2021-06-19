@@ -5,6 +5,11 @@
   </head>
   <body>
     <h1>Accès restreint</h1>
+    <?php
+      if ($wrongPassword) {
+        ?> <p class="error_message">Le mot de passe saisi est invalide.</p>  <?php
+      }
+    ?>
     <p>Veuillez entrer le mot de passe ci-dessous:</p>
     <form action="?action=list" method="POST">
       <label for="password_input">Mot de passe:</label>

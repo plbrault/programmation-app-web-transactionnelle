@@ -16,7 +16,8 @@ class AppointmentsModel {
              prenom AS first_name,
              no_tel AS phone_number,
              courriel AS email
-             WHERE
+          FROM rendezvous
+          ORDER BY date, time
     ');
     return $query->fetchAll();
   }
