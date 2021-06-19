@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Système de rendez-vous</title>
+    <link rel="stylesheet" type="text/css" href="public/css/global.css" />
   </head>
   <body>
     <h1>Système de rendez-vous</h1>

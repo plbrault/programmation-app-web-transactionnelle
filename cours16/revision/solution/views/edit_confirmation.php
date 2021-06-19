@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Rendez-vous modifié</title>
+    <link rel="stylesheet" type="text/css" href="public/css/global.css" />
   </head>
   <body>
     <?php include(__DIR__ . '/header.php') ?>

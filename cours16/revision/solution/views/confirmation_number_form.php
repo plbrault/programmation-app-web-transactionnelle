@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Modifier un rendez-vous</title>
+    <link rel="stylesheet" type="text/css" href="public/css/global.css" />
   </head>
   <body>
     <?php include(__DIR__ . '/header.php') ?>
