@@ -48,7 +48,7 @@
       </p>
     </form>
     <p>
-      <a href="?action=delete&confirmation_number=<?= $confirmationNumber ?>">Annuler le rendez-vous</a>
+      <a onclick="return confirm('Voulez-vous vraiment annuler votre rendez-vous?')" href="?action=delete&confirmation_number=<?= $confirmationNumber ?>">Annuler le rendez-vous</a>
     </p>
   </body>
 </html>
