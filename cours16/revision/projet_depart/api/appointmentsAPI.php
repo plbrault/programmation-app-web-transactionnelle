@@ -63,8 +63,9 @@ switch ($method) {
     if ($confirmationNumber) {
       sendResponse(404); // Route avec un numéro de confirmation non implantée car non nécessaire pour compléter le laboratoire
     }
-    $appointments = $model->getAll();
-    sendResponse(200, $appointments);
+    /* AJOUTER DU CODE CI-DESSOUS */
+
+    /* FIN DU CODE AJOUTÉ */
   default:
     sendResponse(404);
 }

@@ -19,7 +19,7 @@ class ListController extends Controller {
     }
     // Si le mot de passe fourni est valide, afficher la liste des rendez-vous
     else {
-      /* AJOUTER DU CODE ICI */
+      /* AJOUTER DU CODE CI-DESSOUS */
 
       /* FIN DU CODE AJOUTÉ */
 

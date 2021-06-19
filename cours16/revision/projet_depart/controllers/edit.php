@@ -34,22 +34,11 @@ class EditController extends Controller {
   }
 
   function handlePost($get, $post) {
-    if (
-      !isset($post['confirmation_number'])
-      || !isset($post['date'])
-      || !isset($post['time'])
-      || !isset($post['last_name'])
-      || !isset($post['first_name'])
-      || !isset($post['phone_number'])
-      || !isset($post['email'])
-    ) {
-      exit('Invalid data received.');
-    }
-
     $confirmationNumber = $post['confirmation_number'];
 
-    $model = new AppointmentsModel($this->db);
-    $model->update($confirmationNumber, $post['date'], $post['time'], $post['last_name'], $post['first_name'], $post['phone_number'], $post['email']);
+    /* AJOUTER DU CODE CI-DESSOUS */
+
+    /* FIN DU CODE AJOUTÉ */
 
     include(__DIR__ . '/../views/edit_confirmation.php');
   }
