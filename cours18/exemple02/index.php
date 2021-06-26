@@ -11,6 +11,7 @@ include_once('models/users.php');
   - Ouvrir la page dans un autre onglet
 */
 
+// Démarrer le système de session. Doit absolument être appelé avant tout code HTML pour pouvoir utiliser les variables de session.
 session_start();
 
 if (isset($_SESSION['username'])) {
