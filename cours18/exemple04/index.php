@@ -4,6 +4,7 @@ include_once('db.php');
 include_once('./controllers/login.php');
 include_once('./controllers/connected.php');
 include_once('./controllers/logout.php');
+include_once('./controllers/user_info.php');
 
 session_start();
 
@@ -21,8 +22,8 @@ if (!isset($_SESSION['username'])) {
   /*
     On ajoute notre gestion d'actions habituelle.
 
-    On a les actions "connected", "member" et "logout".
-    La page "connected" contient un lien vers les actions "member" et "logout".
+    On a les actions "connected", "user_info" et "logout".
+    La page "connected" contient un lien vers les actions "user_info" et "logout".
 
     Note: puisque nos actions ne sont pas des verbes, il pourrait être approprié d'employer un autre
     terme (par exemple, "page"). Il s'agit simplement d'un choix de conception. Au final, on voudrait
@@ -35,6 +36,9 @@ if (!isset($_SESSION['username'])) {
   }
 
   switch ($action) {
+    case 'user_info':
+      $controller = new UserInfoController($db);
+      break;
     case 'logout':
       $controller = new LogoutController($db);
       break;

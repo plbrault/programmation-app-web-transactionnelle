@@ -12,6 +12,12 @@ class UsersModel {
     $query->execute([ $username ]);
     return $query->fetchColumn();
   }
+
+  function get($username) {
+    $query = $this->db->prepare('SELECT username, first_name, last_name FROM users WHERE username = ?');
+    $query->execute([ $username ]);
+    return $query->fetch();
+  }
 }
 
 ?>
