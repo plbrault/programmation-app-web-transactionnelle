@@ -11,11 +11,11 @@ class LoginController extends Controller {
   function handlePost(&$session, $get, $post) {
     $model = new UsersModel($this->db);
 
-    $hashedPassword = $model->getHashedPassword($_POST['username']);
+    $hashedPassword = $model->getHashedPassword($post['username']);
   
-    if ($hashedPassword && password_verify($_POST['password'], $hashedPassword)) {
+    if ($hashedPassword && password_verify($post['password'], $hashedPassword)) {
       // Le mot de passe saisi est le bon
-      $session['username'] = $_POST['username'];
+      $session['username'] = $post['username'];
       include('views/login_success.php');
     } else {
       // Le mot de passe saisi est invalide, ou l'utilisateur n'existe pas
