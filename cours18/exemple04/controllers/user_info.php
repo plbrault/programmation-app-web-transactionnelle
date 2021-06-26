@@ -8,7 +8,7 @@ class UserInfoController extends Controller {
     $username = $session['username'];
 
     $model = new UsersModel($this->db);
-    $user = $model->get($username);
+    $user = $model->getByUsername($username);
 
     include(__DIR__ . '/../views/user_info.php');
   }

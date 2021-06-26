@@ -10,7 +10,7 @@
         echo "<p>Oup! Le nom d'utilisateur ou le mot de passe que vous avez entré est invalide.</p>";
       }
     ?>
-    <form method="POST" action=".">
+    <form method="POST" action="?action=login">
       <p>
         <label for="username_input">Nom d'utilisateur:</label>
         <input type="text" name="username" id="username_input" required />

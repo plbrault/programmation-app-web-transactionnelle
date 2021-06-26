@@ -13,8 +13,8 @@ class UsersModel {
     return $query->fetchColumn();
   }
 
-  function get($username) {
-    $query = $this->db->prepare('SELECT username, first_name, last_name FROM users WHERE username = ?');
+  function getByUsername($username) {
+    $query = $this->db->prepare('SELECT id, username, first_name, last_name FROM users WHERE username = ?');
     $query->execute([ $username ]);
     return $query->fetch();
   }

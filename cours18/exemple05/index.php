@@ -1,6 +1,7 @@
 <?php
 
 include_once('db.php');
+include_once('./controllers/home.php');
 include_once('./controllers/login.php');
 include_once('./controllers/connected.php');
 include_once('./controllers/logout.php');
@@ -14,13 +15,16 @@ session_start();
   qu'aux utilisateurs authentifiés.
 */
 
-$action = 'connected';
+$action = 'home';
 if (isset($_GET['action'])) {
   $action = $_GET['action'];
 }
 
 $controller;
 switch ($action) {
+  case 'connected':
+    $controller = new ConnectedController($db);
+    break;
   case 'login':
     $controller = new LoginController($db);
     break;
@@ -30,9 +34,10 @@ switch ($action) {
   case 'logout':
     $controller = new LogoutController($db);
     break;
-  case 'connected':
+  case 'home':
   default:
-    $controller = new ConnectedController($db);
+    $controller = new HomeController($db);
+    break;
 }
 
 /*
