@@ -7,7 +7,7 @@
     <h1>Connexion</h1>
     <?php
       if ($loginFailed) {
-        echo "<p>Oup! Le nom d'utilisateur ou le mot de passe que vous avez entré est invalide.</p>";
+        echo "<p>Oups! Le nom d'utilisateur ou le mot de passe que vous avez entré est invalide.</p>";
       }
     ?>
     <form method="POST" action=".">
