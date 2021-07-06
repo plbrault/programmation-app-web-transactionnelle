@@ -3,3 +3,4 @@ Pour exécuter les tests:
 ./vendor/bin/phpunit tests
 
 Le code est documenté selon les normes de phpDocumentor (https://phpdoc.org/).
+Le dossier phpdoc contient le site de documentation généré par phpDocumentor.
