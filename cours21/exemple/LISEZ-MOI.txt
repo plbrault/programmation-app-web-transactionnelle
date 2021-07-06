@@ -1,0 +1,3 @@
+Pour exécuter les tests:
+
+./vendor/bin/phpunit tests
