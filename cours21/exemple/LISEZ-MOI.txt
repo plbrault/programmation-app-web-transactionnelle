@@ -1,3 +1,5 @@
 Pour exécuter les tests:
 
 ./vendor/bin/phpunit tests
+
+Le code est documenté selon les normes de phpDocumentor (https://phpdoc.org/).
